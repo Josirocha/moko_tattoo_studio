@@ -1,5 +1,4 @@
-import tatuagens from "./model/tatuagens.js"
-
+// import tatuagens from './model/tatuagens.js'
 const tatuagensController = (app) =>{
     app.get('/tatuagens', (req, res) => {
     res.send('Rota GET para tatuagens')
