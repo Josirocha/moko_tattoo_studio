@@ -3,7 +3,7 @@
   import fornecedoresController from './controller/fornecedores-controller.js'
 
  
-  
+
   const app = express()
   
   app.use(express.json())
