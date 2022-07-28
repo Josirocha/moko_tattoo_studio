@@ -3,3 +3,5 @@ const tatuadores = (app) =>{
     res.send('Rota GET para tatuadores')
   })
 }
+
+export default tatuadores
