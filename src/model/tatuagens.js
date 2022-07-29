@@ -1,9 +1,17 @@
-class Tatuagens {
-    constructor(id, nome, url) {
-        this.id = id;
-        this.nome = nome;
-        this.url = url;
-    }
-}
+// const tatuagensModel = {
+//     insereImagem: (url) => {
+//         return insereImagem(url)
+//     },
 
-export default Tatuagens
+//     pegaImagem: (id) => {
+//         return  pegaImagem(id)
+//     },
+
+//     deletaImagem :  (id)=> {
+//          deletaImagem (id)
+//     },
+
+
+// }
+
+// export default tatuagensModel
