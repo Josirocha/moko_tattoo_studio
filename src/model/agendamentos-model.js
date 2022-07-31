@@ -1,0 +1,39 @@
+import * as validacaoAgendamento from "../services/validacao-agendamentos.js"
+import agendamentosDAO from "../DAO/agendamentosDAO.js"
+
+const agendamentoModel = {
+    insereAgendamento: (agendamentos) => {
+
+    },
+
+    pegaAgendamentos: async () => {
+        try {
+            const dados = await agendamentosDAO.pegaTodosAgendamentos()
+            if (!dados) throw new Error("agendamento não encontrado")
+            return dados
+        } catch (error) {
+            throw error
+        }
+    },
+
+    pegaAgendamentoPorId: async (id) => {
+        try {
+            validacaoAgendamento.validaId(id)
+            const dados = await agendamentosDAO.pegaUmAgendamento(id)
+            if (!dados) throw new Error("agendamento não encontrado")
+            return dados
+        } catch (error) {
+            throw error
+        }
+    },
+    deletaAgendamento: (agendamentos) => {
+
+    },
+    atualizaAgendamento: (agendamentos) => {
+
+    }
+
+
+}
+
+export default agendamentoModel
