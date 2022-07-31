@@ -6,6 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/server.js",
+    "database": "node ./src/database/create-and-populate.js",
+    "delete-db": "rm ./src/database/database.db",
     "dev": "nodemon ./src/server.js"
   },
   "repository": {
