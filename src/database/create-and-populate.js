@@ -50,9 +50,9 @@ const DATABASE_SCHEMA = [
             "id" INTEGER PRIMARY KEY AUTOINCREMENT,
             "categoria" varchar(64),
             "link" varchar(64),
-            "idTatuador" INT,
-            FOREIGN KEY (idTatuador)
-                REFERENCES TATUADORES (idTatuador)     
+            "id_tatuador" INT,
+            FOREIGN KEY (id_tatuador)
+                REFERENCES TATUADORES (id)     
             )`
   },
 
@@ -112,7 +112,7 @@ const Population = [
 
   {
     entidade: "Tabela tatuagens populada",
-    query: `INSERT INTO TATUAGENS (CATEGORIA, ID_TATUADOR)
+    query: `INSERT INTO TATUAGENS (CATEGORIA,LINK, ID_TATUADOR)
     VALUES 
         ('Realismo','imagem1', 1),
         ('Maori', 'imagem2', 2),
