@@ -7,7 +7,7 @@ const agendamentosController = {
             const dados = req.body
             const mensagem = await agendamentoModel.insereAgendamento(dados)
             res.status(200).json(mensagem)
-            
+
         } catch (error) {
             res.status(400).json(
                 {
@@ -20,8 +20,10 @@ const agendamentosController = {
     // ATUALIZA UM AGENDAMENTO
     atualizarAgendamento: async (req, res) => {
         try {
-            // const todosAgendamentos = await agendamentoModel.pegaAgendamentos()
-            //res.status(200).json(todosAgendamentos)
+            const id = req.params.id
+            const dados = req.body
+            const mensagem = await agendamentoModel.atualizaAgendamento(id, dados)
+            res.status(200).json(mensagem)
             res.json()
         } catch (error) {
             res.status(404).json(

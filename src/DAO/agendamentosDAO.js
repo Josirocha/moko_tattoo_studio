@@ -54,7 +54,43 @@ const agendamentosDAO = {
                     }
                 })
         })
+    },
+
+    atualizaAgendamento: (id, agendamento) => {
+
+        const query = []
+        const novoDado = []
+
+        if (agendamento.idCliente) {
+            query.push(' idCliente = ? ')
+            novoDado.push(agendamento.idCliente)
+        }
+        if (agendamento.data) {
+            query.push(' data = ? ')
+            novoDado.push(agendamento.data)
+
+        }
+        if (agendamento.horario) {
+            query.push(' horario = ? ')
+            novoDado.push(agendamento.horario)
+        }
+        if (agendamento.idTatuador) {
+            query.push(' idTatuador = ? ')
+            novoDado.push(agendamento.idTatuador)
+        }
+
+        return new Promise((resolve, reject) => {
+            db.run(`UPDATE agendamentos SET ${query.join(',')} WHERE idAgenda = ? `, ...novoDado, id,
+                (erro) => {
+                    if (erro) {
+                        reject(erro)
+                    } else {
+                        resolve("Agendamento atualizado com sucesso")
+                    }
+                })
+        })
     }
 }
+
 
 export default agendamentosDAO

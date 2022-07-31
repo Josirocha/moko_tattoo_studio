@@ -41,8 +41,15 @@ const agendamentoModel = {
             throw error
         }
     },
-    atualizaAgendamento: (agendamentos) => {
-
+    atualizaAgendamento: async (id, agendamento) => {
+        try {
+            validacaoAgendamento.validaId(id)
+            validacaoAgendamento.validaAtualizaAgendamento(agendamento)
+            const mensagem = await agendamentosDAO.atualizaAgendamento(id, agendamento)
+            return mensagem
+        } catch (error) {
+            throw error
+        }
     }
 
 

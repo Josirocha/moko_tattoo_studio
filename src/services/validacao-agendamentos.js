@@ -17,3 +17,16 @@ export const validaAgendamento = (agendamento) => {
     }
 }
 
+export const validaAtualizaAgendamento = (agendamento) => {
+    if (
+        !agendamento ||
+        !Object.values(agendamento).length ||
+        (agendamento.idCliente && isNaN(agendamento.idCliente)) ||
+        (agendamento.idTatuador && isNaN(agendamento.idTatuador)) ||
+        (agendamento.idTatuador && typeof agendamento.data !== 'string') ||
+        (agendamento.idTatuador && typeof agendamento.horario !== 'string')
+    ) {
+        throw new Error("dados inválidos")
+    }
+}
+

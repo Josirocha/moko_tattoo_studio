@@ -1,5 +1,5 @@
 import express from 'express';
-// import clientes from './clientesRoutes.js'
+import clientes from './clientesRoutes.js'
 import agendamentos from './agendamentosRoutes.js'
 
 const routes = (app) => {
@@ -9,7 +9,7 @@ const routes = (app) => {
 
   app.use(
     express.json(),
-    // clientes
+    clientes,
     agendamentos
   )
 }
