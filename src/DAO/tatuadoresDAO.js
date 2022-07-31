@@ -42,6 +42,20 @@ const tatuadoresDAO = {
                     resolve(row)
             })
         })
+    },
+
+    atualizarTatuador : (id, novo) => {
+        const query = `UPDATE TATUADORES SET nome = ?, telefone = ? WHERE id = ?`
+
+        return new Promise((resolve, reject)=>{
+            db.run(query, ...Object.values(novo), id, (error) => {
+                    if(error)
+                        reject(error)
+                    else
+                        resolve(novo)
+                }
+            )
+        })  
     }
 }
 
