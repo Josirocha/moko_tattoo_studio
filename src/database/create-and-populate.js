@@ -14,7 +14,7 @@ const DATABASE_SCHEMA = [
   {
     entidade: "Tabela Clientes Criada",
     query: `CREATE TABLE IF NOT EXISTS "CLIENTES" (
-            "idCliente" INTEGER PRIMARY KEY AUTOINCREMENT,
+            "id" INTEGER PRIMARY KEY AUTOINCREMENT,
             "nome" varchar(64),
             "telefone" varchar(12)
             )`
@@ -23,7 +23,7 @@ const DATABASE_SCHEMA = [
   {
     entidade: "Tabela Tatuadores Criada",
     query: `CREATE TABLE IF NOT EXISTS "TATUADORES" (
-            "idTatuador" INTEGER PRIMARY KEY AUTOINCREMENT,
+            "id" INTEGER PRIMARY KEY AUTOINCREMENT,
             "nome" varchar(64),
             "telefone" varchar(12)
             )`
@@ -32,33 +32,33 @@ const DATABASE_SCHEMA = [
   {
     entidade: "Tabela Agendamentos Criada",
     query: `CREATE TABLE IF NOT EXISTS "AGENDAMENTOS" (
-            "idAgenda" INTEGER PRIMARY KEY AUTOINCREMENT,
+            "id" INTEGER PRIMARY KEY AUTOINCREMENT,
             "data" DATE,
             "horario" varchar(12),
-            "idCliente" INT,
-            "idTatuador" INT,
-            FOREIGN KEY (idCliente)
-                REFERENCES CLIENTES (idClientes),
-            FOREIGN KEY (idTatuador)
-                REFERENCES TATUADORES (idTatuador)     
+            "id_cliente" INT,
+            "id_tatuador" INT,
+            FOREIGN KEY (id_cliente)
+                REFERENCES CLIENTES (id),
+            FOREIGN KEY (id_tatuador)
+                REFERENCES TATUADORES (id)     
             )`
   },
 
   {
     entidade: "Tabela Tatuagens Criada",
     query: `CREATE TABLE IF NOT EXISTS "TATUAGENS" (
-            "idTattoo" INTEGER PRIMARY KEY AUTOINCREMENT,
+            "id" INTEGER PRIMARY KEY AUTOINCREMENT,
             "categoria" varchar(64),
-            "idTatuador" INT,
-            FOREIGN KEY (idTatuador)
-                REFERENCES TATUADORES (idTatuador)     
+            "id_tatuador" INT,
+            FOREIGN KEY (id_tatuador)
+                REFERENCES TATUADORES (id_tatuador)     
             )`
   },
 
   {
     entidade: "Tabela Fornecedores Criada",
     query: `CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
-            "idFornecedor" INTEGER PRIMARY KEY AUTOINCREMENT,
+            "id" INTEGER PRIMARY KEY AUTOINCREMENT,
             "nome" varchar(64),
             "telefone" varchar(12),
             "endereco" varchar(64),
@@ -69,14 +69,14 @@ const DATABASE_SCHEMA = [
   {
     entidade: "Tabela Produtos Criada",
     query: `CREATE TABLE IF NOT EXISTS "PRODUTOS" (
-            "idProduto" INTEGER PRIMARY KEY AUTOINCREMENT,
+            "id" INTEGER PRIMARY KEY AUTOINCREMENT,
             "descricao" varchar(64),
             "quantidade" integer,
             "valor" real,
             "tipo" varchar(15),
-            "idFornecedor" INT,
-            FOREIGN KEY (idFornecedor)
-                REFERENCES FORNECEDOR (idFornecedor)     
+            "id_fornecedor" INT,
+            FOREIGN KEY (id_fornecedor)
+                REFERENCES FORNECEDOR (id_fornecedor)     
             )`
   }];
 
@@ -101,7 +101,7 @@ const Population = [
 
   {
     entidade: "Tabela agendamentos populada",
-    query: `INSERT INTO AGENDAMENTOS (DATA, HORARIO, IDCLIENTE, IDTATUADOR)
+    query: `INSERT INTO AGENDAMENTOS (DATA, HORARIO, ID_CLIENTE, ID_TATUADOR)
     VALUES 
         ('2022-08-15', '14:00', 1, 2),
         ('2022-08-18', '15:00', 2, 3),
@@ -111,7 +111,7 @@ const Population = [
 
   {
     entidade: "Tabela tatuagens populada",
-    query: `INSERT INTO TATUAGENS (CATEGORIA, IDTATUADOR)
+    query: `INSERT INTO TATUAGENS (CATEGORIA, ID_TATUADOR)
     VALUES 
         ('Realismo', 1),
         ('Maori', 2),
@@ -131,7 +131,7 @@ const Population = [
 
   {
     entidade: "Tabela produtos populada",
-    query: `INSERT INTO PRODUTOS (DESCRICAO, QUANTIDADE, VALOR, TIPO, IDFORNECEDOR)
+    query: `INSERT INTO PRODUTOS (DESCRICAO, QUANTIDADE, VALOR, TIPO, ID_FORNECEDOR)
     VALUES 
         ('Agulhas de tatuagem', 178, 2.50, 'Materiais', 1),
         ('Tinta preta', 52, 30.99, 'Materiais', 2),
