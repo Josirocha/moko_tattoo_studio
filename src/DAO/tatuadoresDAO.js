@@ -15,7 +15,7 @@ const tatuadoresDAO = {
     },
 
     listarTatuador : (id) => {
-        const query = "SELECT * FROM TATUADORES WHERE id = ?"
+        const query = `SELECT * FROM TATUADORES WHERE id = ?`
         return new Promise((resolve, reject) => {
             db.get(query, id, (error,row) => {
                 if(error) {
