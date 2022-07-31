@@ -16,12 +16,12 @@ const dao = {
         })
     },
 
-    criarCliente : (nome, telefone) => {
+    criarCliente : (usuario) => {
         const CRIA_CLIENTE = `INSERT INTO CLIENTES (NOME, TELEFONE)
         VALUES (?, ?)`
 
-        return new Promise((resolve, reject)=>{
-            db.run(CRIA_CLIENTE, [nome, telefone], (error,row) => {
+        return new Promise((resolve, reject) => {
+            db.run(CRIA_CLIENTE, usuario.nome, usuario.telefone, (error,row) => {
                 if(error)
                     reject(error)
                 else

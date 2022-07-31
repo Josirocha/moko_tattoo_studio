@@ -5,7 +5,8 @@ const router = express.Router();
 
 router
     .get("/clientes", clienteController.listarClientes)
-    .get("clientes/:id", )
+    // .get("/clientes/:id", clienteController.listarClientesId)
+    .post("/clientes", clienteController.criarCliente)
 
 
 export default router;
