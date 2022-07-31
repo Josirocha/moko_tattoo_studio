@@ -14,6 +14,20 @@ const dao = {
                     resolve(row)
             })
         })
+    },
+
+    criarCliente : (nome, telefone) => {
+        const CRIA_CLIENTE = `INSERT INTO CLIENTES (NOME, TELEFONE)
+        VALUES (?, ?)`
+
+        return new Promise((resolve, reject)=>{
+            db.run(CRIA_CLIENTE, [nome, telefone], (error,row) => {
+                if(error)
+                    reject(error)
+                else
+                    resolve(row)
+            })
+        })
     }
 }
 
