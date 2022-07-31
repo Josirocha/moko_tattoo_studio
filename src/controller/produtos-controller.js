@@ -1,9 +1,14 @@
-const tatuagensController = (app) =>{
-    app.get('/produtos', (req, res) => {
-    res.send('GET para produtos')
-  })
+import dao from "../DAO/produtosDAO.js";
 
-  app.post('/produtos', (req, res) => {
-    res.send('Post para produtos')
-  })
-}
+const produtosController = {
+  listarProdutos: async (req, res) => {
+    try {
+      const resposta = await dao.verProdutos();
+      res.status(200).json(resposta);
+    } catch (e) {
+      res.status(400).json(e.message);
+    }
+  }
+};
+
+export default produtosController;
