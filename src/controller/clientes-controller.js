@@ -1,5 +1,4 @@
 import dao from "../DAO/clientesDAO.js";
-// import ClienteModel from '../model'
 
 const Clientecontroller = {
   listarClientes: async (req, res) => {

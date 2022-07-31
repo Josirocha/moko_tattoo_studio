@@ -49,6 +49,7 @@ const DATABASE_SCHEMA = [
     query: `CREATE TABLE IF NOT EXISTS "TATUAGENS" (
             "idTattoo" INTEGER PRIMARY KEY AUTOINCREMENT,
             "categoria" varchar(64),
+            "link" varchar(64),
             "idTatuador" INT,
             FOREIGN KEY (idTatuador)
                 REFERENCES TATUADORES (idTatuador)     
@@ -113,11 +114,11 @@ const Population = [
     entidade: "Tabela tatuagens populada",
     query: `INSERT INTO TATUAGENS (CATEGORIA, IDTATUADOR)
     VALUES 
-        ('Realismo', 1),
-        ('Maori', 2),
-        ('OldSchool', 3),
-        ('Minimalista', 2),
-        ('P&B', 1);`
+        ('Realismo','imagem1', 1),
+        ('Maori', 'imagem2', 2),
+        ('OldSchool', 'imagem3', 3),
+        ('Minimalista', 'imagem4', 2),
+        ('P&B', 'imagem5', 1);`
   },
 
   {

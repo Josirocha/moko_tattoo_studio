@@ -1,17 +1,9 @@
-// const tatuagensModel = {
-//     insereImagem: (url) => {
-//         return insereImagem(url)
-//     },
+const tatuagensModel  = (categoria, link) => {
+    return {
+        categoria: categoria,
+        link: link
 
-//     pegaImagem: (id) => {
-//         return  pegaImagem(id)
-//     },
+    }
+}
 
-//     deletaImagem :  (id)=> {
-//          deletaImagem (id)
-//     },
-
-
-// }
-
-// export default tatuagensModel
+export default tatuagensModel
