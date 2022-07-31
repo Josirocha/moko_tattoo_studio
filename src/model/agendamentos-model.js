@@ -26,8 +26,14 @@ const agendamentoModel = {
             throw error
         }
     },
-    deletaAgendamento: (agendamentos) => {
-
+    deletaAgendamento: async (id) => {
+        try {
+            validacaoAgendamento.validaId(id)
+            const mensagem = await agendamentosDAO.deletaAgendamentos(id)
+            return mensagem
+        } catch (error) {
+            throw error
+        }
     },
     atualizaAgendamento: (agendamentos) => {
 

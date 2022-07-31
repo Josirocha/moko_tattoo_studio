@@ -37,9 +37,9 @@ const agendamentosController = {
     // DELETA UM AGENDAMENTO
     deletaAgendamento: async (req, res) => {
         try {
-            // const todosAgendamentos = await agendamentoModel.pegaAgendamentos()
-            //res.status(200).json(todosAgendamentos)
-            res.json()
+            const id = req.params.id
+            const mensagem = await agendamentoModel.deletaAgendamento(id)
+            res.status(201).send(mensagem)
         } catch (error) {
             res.status(404).json(
                 {

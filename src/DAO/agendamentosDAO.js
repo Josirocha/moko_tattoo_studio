@@ -27,6 +27,18 @@ const agendamentosDAO = {
                 })
         })
 
+    },
+    deletaAgendamentos: (id) => {
+        return new Promise((resolve, reject) => {
+            db.run(`DELETE FROM AGENDAMENTOS WHERE idAgenda = ?`, id,
+                (erro) => {
+                    if (erro) {
+                        reject(erro)
+                    } else {
+                        resolve(`Agendamento com id ${id} deletado com sucesso`)
+                    }
+                })
+        })
     }
 }
 
