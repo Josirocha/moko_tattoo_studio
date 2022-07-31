@@ -49,9 +49,10 @@ const DATABASE_SCHEMA = [
     query: `CREATE TABLE IF NOT EXISTS "TATUAGENS" (
             "id" INTEGER PRIMARY KEY AUTOINCREMENT,
             "categoria" varchar(64),
-            "id_tatuador" INT,
-            FOREIGN KEY (id_tatuador)
-                REFERENCES TATUADORES (id_tatuador)     
+            "link" varchar(64),
+            "idTatuador" INT,
+            FOREIGN KEY (idTatuador)
+                REFERENCES TATUADORES (idTatuador)     
             )`
   },
 
@@ -88,8 +89,8 @@ const Population = [
         ('Eugênio Oliveira', '21-994785122'),
         ('Olívia Ribeiro', '21-988796335'),
         ('Mirtes Faria Lima', '21-974659987');`
-  },  
-  
+  },
+
   {
     entidade: "Tabela tatuadores populada!",
     query: `INSERT INTO TATUADORES (NOME, TELEFONE)
@@ -113,11 +114,11 @@ const Population = [
     entidade: "Tabela tatuagens populada",
     query: `INSERT INTO TATUAGENS (CATEGORIA, ID_TATUADOR)
     VALUES 
-        ('Realismo', 1),
-        ('Maori', 2),
-        ('OldSchool', 3),
-        ('Minimalista', 2),
-        ('P&B', 1);`
+        ('Realismo','imagem1', 1),
+        ('Maori', 'imagem2', 2),
+        ('OldSchool', 'imagem3', 3),
+        ('Minimalista', 'imagem4', 2),
+        ('P&B', 'imagem5', 1);`
   },
 
   {
@@ -141,8 +142,8 @@ const Population = [
 
 
 function criaTabelas(...query) {
-   query.forEach((query) => {
-     db.all(query.query, (error) => {
+  query.forEach((query) => {
+    db.all(query.query, (error) => {
       if (error) {
         console.log(error.message);
       } else {
@@ -154,6 +155,6 @@ function criaTabelas(...query) {
 
 
 db.serialize(() => {
-    criaTabelas(...DATABASE_SCHEMA),
+  criaTabelas(...DATABASE_SCHEMA),
     criaTabelas(...Population)
 });

@@ -1,42 +1,14 @@
-// import tatuagensModel from "../model/tatuagens.js"
+import dao from "../DAO/tatuagensDAO.js";
 
-const tatuagensController = (app) => {
-
-  app.get('/tatuagens', (req, res) => {
-    const pegaImg = tatuagensModel.pegaImagem()
-    res.json(
-      {
-        "id": pegaImg,
-        "erro": false
-      }
-
-    )
-  })
-
-  app.post('/tatuagens', (req, res) => {
-    const body = req.body
+const tatuagensController = {
+  imagensTatto: async (req, res) => {
     try {
-      const novaImg = tatuagensModel(body.id, body.url, body.categoria, body.tatuadores, body.clientes)
-
-      tatuagensModel.insereImagem(novaImg)
-      res.json(
-        {
-          "msg": "Imagem inserida",
-          "usuario": novaImg,
-          "erro": false
-        }
-      )
-
-    } catch (error) {
-      res.json(
-        {
-          "msg": error.message,
-          "erro": true
-        }
-      )
+      const resposta = await dao.verTatuagem();
+      res.status(200).json(resposta);
+    } catch (e) {
+      res.status(400).json(e.message);
     }
+  }
+};
 
-  })
-}
-
-export default tatuagensController
+export default tatuagensController;

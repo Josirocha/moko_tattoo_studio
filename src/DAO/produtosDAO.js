@@ -2,12 +2,12 @@ import db from "../database/database.js"
 
 const dao = {
 
-    verTatuagem : () => {
-        const PEGA_TATUAGENS = `
-        SELECT * FROM TATUAGENS
+    verProdutos : () => {
+        const PEGA_PRODUTOS = `
+        SELECT * FROM PRODUTOS
         `
         return new Promise((resolve, reject)=>{
-            db.all(PEGA_TATUAGENS, (error,row)=>{
+            db.all(PEGA_PRODUTOS, (error,row)=>{
                 if(error)
                     reject(error)
                 else
@@ -16,12 +16,12 @@ const dao = {
         })
     },
 
-    criarTatuagem : (categoria, link) => {
-        const CRIA_TATUAGEM = `INSERT INTO TATUAGENS (CATEGORIA, LINK)
-        VALUES (?, ?)`
+    criarProdutos : (descricao, quantidade, valor, tipo) => {
+        const CRIA_PRODUTOS = `INSERT INTO PRODUTOS (DESCRICAO, QUANTIDADE, VALOR, TIPO)
+        VALUES (?, ?, ?, ?)`
 
         return new Promise((resolve, reject)=>{
-            db.run(CRIA_TATUAGEM, [categoria, link], (error,row) => {
+            db.run(CRIA_PRODUTOS, [descricao, quantidade, valor, tipo], (error,row) => {
                 if(error)
                     reject(error)
                 else
