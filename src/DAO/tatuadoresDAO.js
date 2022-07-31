@@ -56,6 +56,19 @@ const tatuadoresDAO = {
                 }
             )
         })  
+    },
+
+    deletarTatuador : (id) => {
+        const query = `DELETE FROM TATUADORES WHERE id = ?`
+
+        return new Promise((resolve, reject) => {
+            db.run(query, id, (error, row) => {
+                if(error)
+                        reject(error)
+                    else
+                        resolve(row)
+                })
+        })
     }
 }
 
