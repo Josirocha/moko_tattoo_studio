@@ -1,8 +1,9 @@
+import agendamentoModel from "../model/agendamentos-model.js"
 
-const agendamentosController = (app) => {
+const agendamentosController = {
 
     // CRIA UM AGENDAMENTO
-    app.post('/agendamentos', async (req, res) => {
+    criarAgendamento: async (req, res) => {
         try {
             // const todosAgendamentos = await agendamentoModel.pegaAgendamentos()
             //res.status(200).json(todosAgendamentos)
@@ -16,10 +17,10 @@ const agendamentosController = (app) => {
                 }
             )
         }
-    })
+    },
 
     // ATUALIZA UM AGENDAMENTO
-    app.put('/agendamentos/:id', async (req, res) => {
+    atualizarAgendamento: async (req, res) => {
         try {
             // const todosAgendamentos = await agendamentoModel.pegaAgendamentos()
             //res.status(200).json(todosAgendamentos)
@@ -31,10 +32,10 @@ const agendamentosController = (app) => {
                 }
             )
         }
-    })
+    },
 
     // DELETA UM AGENDAMENTO
-    app.delete('/agendamentos/:id', async (req, res) => {
+    deletaAgendamento: async (req, res) => {
         try {
             // const todosAgendamentos = await agendamentoModel.pegaAgendamentos()
             //res.status(200).json(todosAgendamentos)
@@ -46,14 +47,13 @@ const agendamentosController = (app) => {
                 }
             )
         }
-    })
+    },
 
     // PEGA TODOS OS AGENDAMENTOS 
-    app.get('/agendamentos', async (req, res) => {
+    pegaAgendamento: async (req, res) => {
         try {
-            // const todosAgendamentos = await agendamentoModel.pegaAgendamentos()
-            //res.status(200).json(todosAgendamentos)
-            res.json()
+            const todosAgendamentos = await agendamentoModel.pegaAgendamentos()
+            res.status(200).json(todosAgendamentos)
         } catch (error) {
             res.status(404).json(
                 {
@@ -61,14 +61,14 @@ const agendamentosController = (app) => {
                 }
             )
         }
-    })
+    },
 
     // PEGA UM AGENDAMENTO POR ID
-    app.get('/agendamentos/:id', async (req, res) => {
+    pegaAgendamentoPorId: async (req, res) => {
         try {
-            // const todosAgendamentos = await agendamentoModel.pegaAgendamentos()
-            //res.status(200).json(todosAgendamentos)
-            res.json()
+            const id = req.params.id
+            const agendamento = await agendamentoModel.pegaAgendamentoPorId(id)
+            res.status(200).json(agendamento)
         } catch (error) {
             res.status(404).json(
                 {
@@ -76,7 +76,7 @@ const agendamentosController = (app) => {
                 }
             )
         }
-    })
+    }
 }
 
 export default agendamentosController
