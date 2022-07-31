@@ -39,6 +39,21 @@ const agendamentosDAO = {
                     }
                 })
         })
+    },
+
+    insereAgendamento: (agendamento) => {
+        console.log('dados', agendamento);
+        return new Promise((resolve, reject) => {
+            db.run(`INSERT INTO AGENDAMENTOS (DATA, HORARIO,IDCLIENTE,IDTATUADOR)
+            VALUES (?, ?, ?, ?)`, agendamento.data, agendamento.horario, agendamento.idCliente, agendamento.idTatuador,
+                (erro) => {
+                    if (erro) {
+                        reject(erro)
+                    } else {
+                        resolve("Agendamento inserido com sucesso")
+                    }
+                })
+        })
     }
 }
 

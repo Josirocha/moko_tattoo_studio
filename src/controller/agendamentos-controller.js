@@ -2,16 +2,14 @@ import agendamentoModel from "../model/agendamentos-model.js"
 
 const agendamentosController = {
 
-    // CRIA UM AGENDAMENTO
     criarAgendamento: async (req, res) => {
         try {
-            // const todosAgendamentos = await agendamentoModel.pegaAgendamentos()
-            //res.status(200).json(todosAgendamentos)
-            res.json({
-                "msg": "agendamento feito com sucesso"
-            })
+            const dados = req.body
+            const mensagem = await agendamentoModel.insereAgendamento(dados)
+            res.status(200).json(mensagem)
+            
         } catch (error) {
-            res.status(404).json(
+            res.status(400).json(
                 {
                     "msg": error.message,
                 }
@@ -34,7 +32,7 @@ const agendamentosController = {
         }
     },
 
-    // DELETA UM AGENDAMENTO
+
     deletaAgendamento: async (req, res) => {
         try {
             const id = req.params.id
@@ -49,7 +47,6 @@ const agendamentosController = {
         }
     },
 
-    // PEGA TODOS OS AGENDAMENTOS 
     pegaAgendamento: async (req, res) => {
         try {
             const todosAgendamentos = await agendamentoModel.pegaAgendamentos()
@@ -63,7 +60,6 @@ const agendamentosController = {
         }
     },
 
-    // PEGA UM AGENDAMENTO POR ID
     pegaAgendamentoPorId: async (req, res) => {
         try {
             const id = req.params.id

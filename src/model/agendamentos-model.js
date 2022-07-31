@@ -2,8 +2,14 @@ import * as validacaoAgendamento from "../services/validacao-agendamentos.js"
 import agendamentosDAO from "../DAO/agendamentosDAO.js"
 
 const agendamentoModel = {
-    insereAgendamento: (agendamentos) => {
-
+    insereAgendamento: async (agendamento) => {
+        try {
+            validacaoAgendamento.validaAgendamento(agendamento)
+            const mensagem = await agendamentosDAO.insereAgendamento(agendamento)
+            return mensagem
+        } catch (error) {
+            throw error
+        }
     },
 
     pegaAgendamentos: async () => {
