@@ -1,7 +1,20 @@
 import db from "../database/database.js"
 
 const tatuadoresDAO = {
-    listarTatuadores : (id) => {
+
+    listarTatuadores : () => {
+        const query = `SELECT * FROM TATUADORES`
+        return new Promise((resolve, reject) => {
+            db.all(query, (error,row) => {
+                if(error)
+                    reject(error)
+                else
+                    resolve(row)
+            })
+        })
+    },
+
+    listarTatuador : (id) => {
         const query = "SELECT * FROM TATUADORES WHERE id = ?"
         return new Promise((resolve, reject) => {
             db.get(query, id, (error,row) => {
