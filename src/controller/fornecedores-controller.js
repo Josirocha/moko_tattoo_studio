@@ -1,6 +1,27 @@
-const fornecedoresController = (app) => {
-    app.get('/fornecedores', (req, res) => {
-        res.send('rota get funcionando')
-    })
-}
+const fornecedoresController ={
+
+    criarFornecedores:(req,res) =>{
+        
+
+    },
+
+
+    atualizarFornecedores:(req,res)=>{
+
+    },
+
+    deletaForcenedores:(req,res)=>{
+
+    },
+
+    pegaFornecedores:(req,res)=>{
+
+    },
+
+    pegaFornecedoresId:(req,res)=>{
+        
+    }
+}  
+
 export default fornecedoresController
+
