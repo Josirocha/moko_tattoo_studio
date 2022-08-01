@@ -22,10 +22,15 @@ const tatuadoresController = {
   },
 
   criarTatuador: async (req, res) => {
+    const body = req.body;
     try {
-      const body = req.body
-      const resposta = await tatuadoresDAO.criarTatuador(body)
-      res.status(201).json(resposta)
+      const insereTatuador = tatuadoresModel(body.nome, body.telefone)
+      // colocar a validação aqui
+      const novoTatuador = await tatuadoresDAO.criarTatuador(insereTatuador)
+      res.status(201).json({
+        "msg": `Pessoa tatuadora ${body.nome} inserida com sucesso`,
+        "Pessoa tatuadora": novoTatuador
+      })
 
     } catch (e) {
       res.status(404).json(e.message);
