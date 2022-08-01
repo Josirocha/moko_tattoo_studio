@@ -1,11 +1,10 @@
-class Fornecedores{
-    constructor(id, nome, cnpj, telefone, email) {
-        this.id = id;
-        this.nome = nome;
-        this.url = cnpj;
-        this.telefone;
-        this.email;
-    }
-}
+const fornecedoresModel = (nome,telefone,endereco, email) =>{
+       return {
+        nome:nome,
+        telefone:telefone,
+        endereco:endereco,
+        email:email
 
-export default Fornecedores
+        }
+    }
+export default fornecedoresModel
