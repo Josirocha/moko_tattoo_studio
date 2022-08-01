@@ -25,9 +25,9 @@ const tatuagensController = {
     const body = req.body;
     try {
       const criaTattoo = tatuagens(body.categoria, body.link, body.id_tatuador);
-      const novo = await dao.guardarImagens(criaTattoo);
+      const novo = await dao.criarTatuagem(criaTattoo);
       res.json({
-        msg: `Imagem ${body.categoria} do ${body.id_tatuador} inserido com sucesso`,
+        msg: `Imagem da categoria: ${body.categoria} do tatuador id: ${body.id_tatuador} foi inserida com sucesso`,
         Tatuagem: novo,
         erro: false,
       });
@@ -40,12 +40,12 @@ const tatuagensController = {
     const body = req.body;
     const id = req.params.id;
     try {
-      const alteraImagem = clienteM(
+      const alteraImagem = tatuagens(
         body.categoria,
         body.link,
         body.id_tatuador
       );
-      const novo = await dao.alterarImagens(id, alteraImagem);
+      const novo = await dao.ajustaTatuagem(id, alteraImagem);
       res.json({
         msg: `Imagem da ${body.categoria}, com id ${id} atualizada com sucesso`,
         usuario: novo,
@@ -59,9 +59,9 @@ const tatuagensController = {
   deletarImagens: async (req, res) => {
     const id = req.params.id;
     try {
-      await dao.deletarimagens(id);
+      await dao.deletarTatuagem(id);
       res.json({
-        msg: `Imagem ${id} deletada com sucesso!`,
+        msg: `Imagem do id ${id} deletada com sucesso!`,
         erro: "false",
       });
     } catch (e) {

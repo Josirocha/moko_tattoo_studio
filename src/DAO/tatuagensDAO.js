@@ -40,10 +40,10 @@ const dao = {
         })
     }, 
 
-    ajustaTatuagem: (categoria, link) => {
-        const ajustaTattoo = `UPDATE TATUAGENS SET categoria = ?, link = ? WHERE id = ?`
+    ajustaTatuagem: (id) => {
+        const ajustaTattoo = `UPDATE TATUAGENS SET categoria = ?, link = ? WHERE id_tatuador = ?`
         return new Promise((resolve, reject)=>{
-           db.run(ajustaTattoo, [categoria, link], (error,row) => {
+           db.run(ajustaTattoo, id, (error,row) => {
                 if(error)
                     reject(error)
                 else
