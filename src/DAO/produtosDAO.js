@@ -29,12 +29,12 @@ const dao = {
 
     },
 
-    criarProdutos: (descricao, quantidade, valor, tipo) => {
-        const CRIA_PRODUTOS = `INSERT INTO PRODUTOS (DESCRICAO, QUANTIDADE, VALOR, TIPO)
-        VALUES (?, ?, ?, ?)`
+    criarProdutos: (descricao, quantidade, valor, tipo, id_fornecedor) => {
+        const CRIA_PRODUTOS = `INSERT INTO PRODUTOS (DESCRICAO, QUANTIDADE, VALOR, TIPO, ID_FORNECEDOR)
+        VALUES (?, ?, ?, ?, ?)`
 
         return new Promise((resolve, reject) => {
-            db.run(CRIA_PRODUTOS, [descricao, quantidade, valor, tipo], (error, row) => {
+            db.run(CRIA_PRODUTOS, ...Object.values(descricao, quantidade,valor, tipo, id_fornecedor), (error, row) => {
                 if (error)
                     reject(error)
                 else
@@ -44,7 +44,7 @@ const dao = {
     },
 
     atualizarProduto : (id, novo) => {
-        const query = `UPDATE PRODUTOS SET descricao = ?, quantidade = ?, valor = ?, tipo = ?, WHERE id = ?`
+        const query = `UPDATE PRODUTOS SET descricao = ?, quantidade = ?, valor = ?, tipo = ?, id_fornecedor = ? WHERE id = ?`
 
         return new Promise((resolve, reject)=>{
             db.run(query, ...Object.values(novo), id, (error) => {
