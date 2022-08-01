@@ -1,14 +1,12 @@
 import db from "../database/database.js"
 
-const dao = {
+const tatuadoresDAO = {
 
-    verProdutos: () => {
-        const PEGA_PRODUTOS = `
-        SELECT * FROM PRODUTOS
-        `
+    listarTatuadores : () => {
+        const query = `SELECT * FROM TATUADORES`
         return new Promise((resolve, reject) => {
-            db.all(PEGA_PRODUTOS, (error, row) => {
-                if (error)
+            db.all(query, (error,row) => {
+                if(error)
                     reject(error)
                 else
                     resolve(row)
@@ -16,26 +14,29 @@ const dao = {
         })
     },
 
-    verUmProduto: (id) => {
+    listarTatuador : (id) => {
+        const query = `SELECT * FROM TATUADORES WHERE id = ?`
         return new Promise((resolve, reject) => {
-            db.get('SELECT * FROM PRODUTOS WHERE id = ?', id, (error, row) => {
-                if (error) {
+            db.get(query, id, (error,row) => {
+                if(error) {
                     reject(error)
-                } else {
-                    resolve(row)
-                }
+                } else if ((!row) || row.length <= 0) {
+                    reject({
+                        "message": 'Tatuador não encontrado',
+                        "erro": true
+                    })
+                } else {resolve(row)}
             })
         })
-
     },
 
-    criarProdutos: (descricao, quantidade, valor, tipo, id_fornecedor) => {
-        const CRIA_PRODUTOS = `INSERT INTO PRODUTOS (DESCRICAO, QUANTIDADE, VALOR, TIPO, ID_FORNECEDOR)
-        VALUES (?, ?, ?, ?, ?)`
+    criarTatuador : (usuario) => {
+        const query = `INSERT INTO TATUADORES (NOME, TELEFONE)
+        VALUES (?, ?)`
 
         return new Promise((resolve, reject) => {
-            db.run(CRIA_PRODUTOS, ...Object.values(descricao, quantidade,valor, tipo, id_fornecedor), (error, row) => {
-                if (error)
+            db.run(query, ...Object.values(usuario), (error,row) => {
+                if(error)
                     reject(error)
                 else
                     resolve(row)
@@ -43,8 +44,8 @@ const dao = {
         })
     },
 
-    atualizarProduto : (id, novo) => {
-        const query = `UPDATE PRODUTOS SET descricao = ?, quantidade = ?, valor = ?, tipo = ?, id_fornecedor = ? WHERE id = ?`
+    atualizarTatuador : (id, novo) => {
+        const query = `UPDATE TATUADORES SET nome = ?, telefone = ? WHERE id = ?`
 
         return new Promise((resolve, reject)=>{
             db.run(query, ...Object.values(novo), id, (error) => {
@@ -57,8 +58,8 @@ const dao = {
         })  
     },
 
-    deletarProduto : (id) => {
-        const query = `DELETE FROM PRODUTOS WHERE id = ?`
+    deletarTatuador : (id) => {
+        const query = `DELETE FROM TATUADORES WHERE id = ?`
 
         return new Promise((resolve, reject) => {
             db.run(query, id, (error, row) => {
@@ -71,4 +72,4 @@ const dao = {
     }
 }
 
-export default dao
+export default tatuadoresDAO
