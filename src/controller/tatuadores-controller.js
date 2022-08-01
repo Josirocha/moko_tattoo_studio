@@ -54,5 +54,19 @@ const tatuadoresController = {
     }
   },
 
+  deletarTatuador : async (req, res) => {
+    const id = req.params.id
+    try {
+      await tatuadoresDAO.deletarTatuador(id)
+      res.json({
+        "msg": `Pessoa tatuadora com ${id} deletada com sucesso!`
+      })
+    } catch (e) {
+      res.json({
+        "msg": e.message
+      })
+    }
+  }
+
 }
 export default tatuadoresController
