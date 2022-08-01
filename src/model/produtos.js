@@ -1,9 +1,10 @@
-const ProdutosM = (descricao, quantidade, valor, tipo) => {
+const ProdutosM = (descricao, quantidade, valor, tipo, id_fornecedor) => {
     return {
         descricao: descricao,
         quantidade: quantidade,
         valor: valor,
-        tipo: tipo
+        tipo: tipo,
+        id_fornecedor: id_fornecedor
     }
 }
 
