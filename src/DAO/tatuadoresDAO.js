@@ -30,12 +30,12 @@ const tatuadoresDAO = {
         })
     },
 
-    criarTatuador : (usuario) => {
+    criarTatuador : (nome, telefone) => {
         const query = `INSERT INTO TATUADORES (NOME, TELEFONE)
         VALUES (?, ?)`
 
         return new Promise((resolve, reject) => {
-            db.run(query, ...Object.values(usuario), (error,row) => {
+            db.run(query, [nome, telefone], (error,row) => {
                 if(error)
                     reject(error)
                 else

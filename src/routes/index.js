@@ -15,6 +15,9 @@ const routes = (app) => {
     express.json(),
     clientes,
     agendamentos,
+
+
+    
     tatuadores
   )
 }
