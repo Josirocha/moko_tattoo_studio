@@ -112,7 +112,7 @@ const Population = [
 
   {
     entidade: "Tabela tatuagens populada",
-    query: `INSERT INTO TATUAGENS (CATEGORIA,LINK, ID_TATUADOR)
+    query: `INSERT INTO TATUAGENS (CATEGORIA, LINK, ID_TATUADOR)
     VALUES 
         ('Realismo','imagem1', 1),
         ('Maori', 'imagem2', 2),
