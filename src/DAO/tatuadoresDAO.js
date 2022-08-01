@@ -71,3 +71,5 @@ const tatuadoresDAO = {
         })
     }
 }
+
+export default tatuadoresDAO
