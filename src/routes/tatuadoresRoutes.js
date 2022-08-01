@@ -7,6 +7,7 @@ router
     .get('/tatuadores', tatuadoresController.listarTatuadores)
     .get('/tatuadores/:id', tatuadoresController.listarTatuador)
     .post('/tatuadores', tatuadoresController.criarTatuador)
+    .put('/tatuadores/:id', tatuadoresController.atualizarTatuador)
 
 
 export default router;

@@ -35,7 +35,24 @@ const tatuadoresController = {
     } catch (e) {
       res.status(404).json(e.message);
     }
-  }
+  },
+
+  atualizarTatuador: async (req, res) => {
+    const body = req.body
+    const id = req.params.id
+    try {
+      const criaTatuador = tatuadoresModel(body.nome, body.telefone)
+      // valida.validaUser(...Object.values(criaUsuario))
+      const novoTatuador = await tatuadoresDAO.atualizarTatuador(id, criaTatuador)
+      res.json({
+        "msg": `Pessoa tatuadora ${body.nome}, com id ${id}, atualizada com sucesso`,
+        "Pessoa tatuadora": novoTatuador
+      })
+
+    } catch (e) {
+      res.json(e.message)
+    }
+  },
 
 }
 export default tatuadoresController
