@@ -5,7 +5,7 @@ const router = express.Router();
 
 router
     .get('/tatuadores', tatuadoresController.listarTatuadores)
-    .get('/tatuador:id', tatuadoresController.listarTatuador)
+    .get('/tatuadores/:id', tatuadoresController.listarTatuador)
 
 
 export default router;
