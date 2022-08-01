@@ -1,4 +1,4 @@
-const Produtos = (descricao, quantidade, valor, tipo) => {
+const ProdutosM = (descricao, quantidade, valor, tipo) => {
     return {
         descricao: descricao,
         quantidade: quantidade,
@@ -6,3 +6,5 @@ const Produtos = (descricao, quantidade, valor, tipo) => {
         tipo: tipo
     }
 }
+
+export default ProdutosM

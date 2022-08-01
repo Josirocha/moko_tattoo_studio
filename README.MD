@@ -5,14 +5,14 @@ Projeto realizado utilizando o [Node.js](https://nodejs.org/en/) com framework [
 
 ##  :heavy_check_mark: Pré-Requisitos
 
-* Node.js  v.16.15.1
-* NPM v.8.11.0
+* [Node.js](https://nodejs.org/en/) - v. 16.15.1
+* [NPM](https://www.npmjs.com/package/npm/v/8.11.0) - v. 8.11.0
 
 ## :outbox_tray: Packages
 
-* Express
-* Nodemon
-* SQLite
+* [Express](https://expressjs.com/) - v. 4.18.1
+* [Nodemon](https://www.npmjs.com/package/nodemon) - v. 2.0.19
+* [SQLite](https://www.npmjs.com/package/sqlite3) - v. 5.0.10
 
 ## :rocket: Instalação da Aplicação
 
@@ -27,12 +27,14 @@ Entrando na pasta:
 ```
 cd moko_tattoo_studio
 ```
-
 Instalando os pacotes:
 ```
 npm install
 ```
-
+Criando e populando o banco de dados:
+```
+npm run database 
+```
 Rodando o projeto:
 ```
 npm start
