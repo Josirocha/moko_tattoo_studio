@@ -1,41 +1,50 @@
 # Moko Tattoo Studio
+
 Projeto de final de módulo do curso de Web Dev Full Stack da [Resilia Educação](https://www.resilia.com.br/) referente ao Módulo 4.
 
-Projeto realizado utilizando o [Node.js](https://nodejs.org/en/) com framework [Express](https://expressjs.com/). SQLite foi utilizado como banco de dados do projeto. 
+Projeto realizado utilizando o [Node.js](https://nodejs.org/en/) com framework [Express](https://expressjs.com/). SQLite foi utilizado como banco de dados do projeto.
 
-##  :heavy_check_mark: Pré-Requisitos
+## :heavy_check_mark: Pré-Requisitos
 
-* [Node.js](https://nodejs.org/en/) - v. 16.15.1
-* [NPM](https://www.npmjs.com/package/npm/v/8.11.0) - v. 8.11.0
+- [Node.js](https://nodejs.org/en/) - v. 16.15.1
+- [NPM](https://www.npmjs.com/package/npm/v/8.11.0) - v. 8.11.0
 
 ## :outbox_tray: Packages
 
-* [Express](https://expressjs.com/) - v. 4.18.1
-* [Nodemon](https://www.npmjs.com/package/nodemon) - v. 2.0.19
-* [SQLite](https://www.npmjs.com/package/sqlite3) - v. 5.0.10
+- [Express](https://expressjs.com/) - v. 4.18.1
+- [Nodemon](https://www.npmjs.com/package/nodemon) - v. 2.0.19
+- [SQLite](https://www.npmjs.com/package/sqlite3) - v. 5.0.10
 
 ## :rocket: Instalação da Aplicação
 
 Abra o terminal/Powershell e rode os comandos abaixo:
 
 Clonando o repositório:
+
 ```
 git clone https://github.com/Josirocha/moko_tattoo_studio.git
 ```
 
 Entrando na pasta:
+
 ```
 cd moko_tattoo_studio
 ```
+
 Instalando os pacotes:
+
 ```
 npm install
 ```
+
 Criando e populando o banco de dados:
+
 ```
-npm run database 
+npm run database
 ```
+
 Rodando o projeto:
+
 ```
 npm start
 ```
@@ -43,106 +52,120 @@ npm start
 ## :pencil: Rotas HTTP implementadas
 
 ### Produtos
- * __GET /produtos__
 
-    Retorna todos os dados do banco. Esquema da resposta:
-    ```json
-    {
-        "produtos": [
-            {
-                "ID": 1,
-                "DESCRICAO": "Tinta preta",
-                "QUANTIDADE": 20,
-                "VALOR": 29.90,
-                "TIPO" : "Materiais",
-                "ID_FORNECEDOR" : 1
-            },
-            {
-                "ID": 2,
-                "DESCRICAO": "Piercing nariz",
-                "QUANTIDADE": 28,
-                "VALOR": 39.99,
-                "TIPO" : "Materiais",
-                "ID_FORNECEDOR" : 3
-            }
-        ],
-    }
-    ```
- * __GET /produtos/id/{id}__
+- **GET /produtos**
 
-    Retorna o produto correspondente ao id. Esquema da resposta: 
-    ```json
-    {
-        "produtos": [
-            {
-                "ID": 4,
-                "DESCRICAO": "Papel toalha",
-                "QUANTIDADE": 20,
-                "VALOR": 3.2,
-                "TIPO" : "Materiais",
-                "ID_FORNECEDOR" : 2
-            },
-        ],
-    }
-    ```
- * __POST /produtos__
+  Retorna todos os dados do banco. Esquema da resposta:
 
-    Insere um produto na base de dados. Esquema da requisição:
-    ```json
-    {
-        "descricao" : "Tinta roxa",
-        "quantidade" : 45,
-        "valor" : 80,
-        "tipo" : "Materiais",
-        "id_fornecedor" : 2
-    }
-    ```
+  ```json
+  {
+    "produtos": [
+      {
+        "ID": 1,
+        "DESCRICAO": "Tinta preta",
+        "QUANTIDADE": 20,
+        "VALOR": 29.9,
+        "TIPO": "Materiais",
+        "ID_FORNECEDOR": 1
+      },
+      {
+        "ID": 2,
+        "DESCRICAO": "Piercing nariz",
+        "QUANTIDADE": 28,
+        "VALOR": 39.99,
+        "TIPO": "Materiais",
+        "ID_FORNECEDOR": 3
+      }
+    ]
+  }
+  ```
 
-    Esquema da resposta
-    ```json
-    {
-        "mensagem": "Produto inserido com sucesso",
-        "erro": false
-    }
-    ```
-* __PUT /produtos/id/{id}__
+- **GET /produtos/id/{id}**
 
-    Atualiza um produto de acordo com o id. Esquema da requisição:
-    ```json
-    {
-        "descrição" : "Tinta vermelha",
-        "quantidade" : 45,
-        "valor" : 80,
-        "tipo" : "Materiais",
-        "id_forncedor" : 2
-    }
-    ```
-    Esquema da resposta:
-    ```json
-    {
-        "msg": "tinta vermelha, com id 13 atualizado com sucesso",
-	"produto": {
-		"descricao": "tinta vermelha",
-		"quantidade": 45,
-		"valor": 80,
-		"tipo": "Materiais",
-		"id_fornecedor": 2
-	},
-	"erro": false
-    }
-    ```
-* __DELETE  /produtos/id/{id}__
+  Retorna o produto correspondente ao id. Esquema da resposta:
 
-    Deleta um produto de acordo com o id. Esquema da resposta:
-    ```json
-    {
-        "msg": "Produto 2 deletado com sucesso!",
-	    "erro": "false"
-    }
-    ```
+  ```json
+  {
+    "produtos": [
+      {
+        "ID": 4,
+        "DESCRICAO": "Papel toalha",
+        "QUANTIDADE": 20,
+        "VALOR": 3.2,
+        "TIPO": "Materiais",
+        "ID_FORNECEDOR": 2
+      }
+    ]
+  }
+  ```
 
-    ### Tatuadores
- * __GET /tatuadores__
+- **POST /produtos**
+
+  Insere um produto na base de dados. Esquema da requisição:
+
+  ```json
+  {
+    "descricao": "Tinta roxa",
+    "quantidade": 45,
+    "valor": 80,
+    "tipo": "Materiais",
+    "id_fornecedor": 2
+  }
+  ```
+
+  Esquema da resposta
+
+  ```json
+  {
+    "mensagem": "Produto inserido com sucesso",
+    "erro": false
+  }
+  ```
+
+- **PUT /produtos/id/{id}**
+
+  Atualiza um produto de acordo com o id. Esquema da requisição:
+
+  ```json
+  {
+    "descrição": "Tinta vermelha",
+    "quantidade": 45,
+    "valor": 80,
+    "tipo": "Materiais",
+    "id_forncedor": 2
+  }
+  ```
+
+  Esquema da resposta:
+
+  ```json
+  {
+    "msg": "tinta vermelha, com id 13 atualizado com sucesso",
+    "produto": {
+      "descricao": "tinta vermelha",
+      "quantidade": 45,
+      "valor": 80,
+      "tipo": "Materiais",
+      "id_fornecedor": 2
+    },
+    "erro": false
+  }
+  ```
+
+- **DELETE /produtos/id/{id}**
+
+  Deleta um produto de acordo com o id. Esquema da resposta:
+
+  ```json
+  {
+    "msg": "Produto 2 deletado com sucesso!",
+    "erro": "false"
+  }
+  ```
+
+  ### Tatuadores
+
+- **GET /tatuadores**
  <p>Lista todos os registros de pessoas tatuadoras cadastradas</p>
 <p>Esquema da resposta:</p>
 
@@ -165,8 +188,8 @@ npm start
         }
     </code>
 </pre>
-	
-* __GET /tatuadores/:id__
+
+- **GET /tatuadores/:id**
 <p>Lista o registro da pessoa tatuadora cadastrada com determinado id. O número do id deve ser passado como parâmetro na rota.</p>
 <p>Esquema da resposta:</p>
 
@@ -180,7 +203,7 @@ npm start
     </code>
 </pre>
 
-* __POST /tatuadores__
+- **POST /tatuadores**
 <p>Insere um registro de pessoa tatuadora. No <em>body</em> da requisição deve ser passado apenas <em>nome</em> e <em>telefone</em> como atributos, pois o id é gerado por autoincremento.</p>
 <p>Esquema da requisição:</p>
 
@@ -203,7 +226,7 @@ npm start
     </code>
 </pre>
 
-* __PUT /tatuadores/:id__
+- **PUT /tatuadores/:id**
 <p>Atualiza um registro específico de pessoa tatuadora com determinado id. O número do id deve ser passado como parâmetro na rota, e a requisição deve ter um <em>body</em>.</p>
 <p>Esquema da requisição:</p>
 
@@ -230,7 +253,7 @@ Esquema da resposta:
     </code>
 </pre>
 
-* __DELETE /tatuadores/:id__
+- **DELETE /tatuadores/:id**
 <p>Apaga um registro específico, conforme o id passado como parâmetro na rota.</p>
 <p>Esquema da resposta:</p>
 
@@ -243,102 +266,207 @@ Esquema da resposta:
 </pre>
 
 ### 💻 Fornecedores
- * __GET /fornecedores__
 
-    Retorna todos os dados do banco. Esquema da resposta:
-    ```json
-        {
-            "fornecedores": [
-                {
-                    "id": 1,
-                    "nome": "AGULHAS MIL LTDA",
-                     "telefone": "21-912345678",
-                     "endereco": "Rua São Bento, nº 123",
-                     "email": "agulhasmil@gmail.com"
-                },
-            {
-                "id": 2,
-                "nome": "ELECTRIC INK",
-                "telefone": "21-998741145",
-                "endereco": "Av. Mario Cruz, nº 2002",
-                "email": "eletricink@gmail.com"
-            },
-            {
-                "id": 3,
-                "nome": "CAPITAL PIERCING",
-                "telefone": "21-998663347",
-                "endereco": "Rua João de Barro, nº 198",
-                "email": "capitalpiercing@gmail.com"
-            }
-        ],
-    }
-    ```
- * __GET /fornecedoresId/id/{id}__
+- **GET /fornecedores**
 
-    Retorna o fornecedor correspondente ao id. Esquema da resposta: 
-    ```json
-    {
-        "fornecedores": [
-            {
-                "id": 2,
-            "nome": "ELECTRIC INK",
-            "telefone": "21-998741145",
-            "endereco": "Av. Mario Cruz, nº 2002",
-            "email": "eletricink@gmail.com"
-            },
-        ],
-    }
-    ```
- * __POST /fornecedores__
+  Retorna todos os dados do banco. Esquema da resposta:
 
-    Insere um fornecedor na base de dados. Esquema da requisição:
-    ```json
-    {
-        "nome": "POMADAS",
+  ```json
+  {
+    "fornecedores": [
+      {
+        "id": 1,
+        "nome": "AGULHAS MIL LTDA",
         "telefone": "21-912345678",
         "endereco": "Rua São Bento, nº 123",
         "email": "agulhasmil@gmail.com"
-    }
-    ```
+      },
+      {
+        "id": 2,
+        "nome": "ELECTRIC INK",
+        "telefone": "21-998741145",
+        "endereco": "Av. Mario Cruz, nº 2002",
+        "email": "eletricink@gmail.com"
+      },
+      {
+        "id": 3,
+        "nome": "CAPITAL PIERCING",
+        "telefone": "21-998663347",
+        "endereco": "Rua João de Barro, nº 198",
+        "email": "capitalpiercing@gmail.com"
+      }
+    ]
+  }
+  ```
 
-    Esquema da resposta
-    ```json
-    {
-          "msg": "Fornecedor POMADAS inserido com sucesso"
-        
-    }
-    ```
-* __PUT /fornecedores/id/{id}__
+- **GET /fornecedoresId/id/{id}**
 
-    Atualiza um fornecedor de acordo com o id. Esquema da requisição:
-    ```json
-    {
-        "nome": "LUVAS",
-        "telefone": "21-912345678",
-        "endereco": "Rua São Bento, nº 123",
-        "email": "luvasmil@gmail.com"
-    }
-    ```
-    Esquema da resposta:
-    ```json
-    {
-       
+  Retorna o fornecedor correspondente ao id. Esquema da resposta:
+
+  ```json
+  {
+    "fornecedores": [
+      {
+        "id": 2,
+        "nome": "ELECTRIC INK",
+        "telefone": "21-998741145",
+        "endereco": "Av. Mario Cruz, nº 2002",
+        "email": "eletricink@gmail.com"
+      }
+    ]
+  }
+  ```
+
+- **POST /fornecedores**
+
+  Insere um fornecedor na base de dados. Esquema da requisição:
+
+  ```json
+  {
+    "nome": "POMADAS",
+    "telefone": "21-912345678",
+    "endereco": "Rua São Bento, nº 123",
+    "email": "agulhasmil@gmail.com"
+  }
+  ```
+
+  Esquema da resposta
+
+  ```json
+  {
+    "msg": "Fornecedor POMADAS inserido com sucesso"
+  }
+  ```
+
+- **PUT /fornecedores/id/{id}**
+
+  Atualiza um fornecedor de acordo com o id. Esquema da requisição:
+
+  ```json
+  {
+    "nome": "LUVAS",
+    "telefone": "21-912345678",
+    "endereco": "Rua São Bento, nº 123",
+    "email": "luvasmil@gmail.com"
+  }
+  ```
+
+  Esquema da resposta:
+
+  ```json
+  {
     "msg": "Fornecedor LUVAS, com id 1, atualizado com sucesso",
     "Fornecedor": {
-        "nome": "LUVAS",
-        "telefone": "21-912345678",
-        "endereco": "Rua São Bento, nº 123",
-        "email": "luvasmil@gmail.com"
-	},
-	"erro": false
-    }
-    ```
-* __DELETE  /fornecedores/id/{id}__
+      "nome": "LUVAS",
+      "telefone": "21-912345678",
+      "endereco": "Rua São Bento, nº 123",
+      "email": "luvasmil@gmail.com"
+    },
+    "erro": false
+  }
+  ```
 
-    Deleta um fornecedor de acordo com o id. Esquema da resposta:
-    ```json
+- **DELETE /fornecedores/id/{id}**
+
+  Deleta um fornecedor de acordo com o id. Esquema da resposta:
+
+  ```json
+  {
+       "msg": "Fornecedor4 deletado com sucesso!"
+    "erro": "false"
+  }
+  ```
+
+### 👨‍👩‍👧‍👦 Clientes
+
+- **GET /fornecedores**
+
+  Retorna todos os dados do banco. Esquema da resposta:
+
+  ```json
+      {
+          {
+      "id": 1,
+      "nome": "Eugênio Oliveira",
+      "telefone": "21-994785122"
+  },
+  {
+      "id": 2,
+      "nome": "Olívia Ribeiro",
+      "telefone": "21-988796335"
+  },
+  {
+      "id": 3,
+      "nome": "Mirtes Faria Lima",
+      "telefone": "21-974659987"
+  }
+
+  }
+  ```
+
+- **GET /clientes/{id}**
+
+  Retorna o cliente correspondente ao id. Esquema da resposta:
+
+  ```json
+  {
     {
-         "msg": "Fornecedor4 deletado com sucesso!"
-	    "erro": "false"
+    "dados": {
+        "id": 1,
+        "nome": "Eugênio Oliveira",
+        "telefone": "21-994785122"
     }
-    ```
+    }
+  }
+  ```
+
+- **POST /clientes**
+
+  Insere um cliente na base de dados. Esquema da requisição:
+
+  ```json
+    {
+    "nome": "Manuela Esteves",
+    "telefone": "21-992246521"
+    }
+  ```
+
+  Esquema da resposta
+
+  ```json
+    {
+    "msg": "Usuário Manuela Esteves inserido com sucesso",
+    "erro": false
+    }
+  ```
+
+- **PUT /clientes/{id}**
+
+  Atualiza um cliente de acordo com o id. Esquema da requisição:
+
+  ```json
+    {
+    "nome": "Maria Esteves",
+    "telefone": "21-992246521"
+    }
+  ```
+
+  Esquema da resposta:
+
+  ```json
+    {
+    "msg": "Usuário Maria Esteves, com id 1 atualizado com sucesso",
+    "erro": false
+    }
+  ```
+
+- **DELETE /clientes/{id}**
+
+  Deleta um cliente de acordo com o id. Esquema da resposta:
+
+  ```json
+    {
+    "msg": "Usuário 1 deletado com sucesso!",
+    "erro": "false"
+    }
+  ```
