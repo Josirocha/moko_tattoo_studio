@@ -17,25 +17,22 @@ const clienteController = {
     const id = req.params.id
     try {
       const resposta = await dao.listarCliente(id);
-      res.status(200).json(resposta);
+      res.status(resposta.status).json(resposta.retorno);
     } catch (e) {
-      res.status(404).json(e.message);
+      res.status(e.status).json(e.message);
     }
   },
 
-  criarCliente: async (req, res) => {
+  cadastrarCliente: async (req, res) => {
     const body = req.body;
     try {
-      const criaUsuario = clienteM(body.nome, body.telefone)
+      const criaUsuario = clienteM(...Object.values(body))
       valida.validaUser(...Object.values(criaUsuario))
-      const newUser = await dao.criarCliente(criaUsuario)
-      res.json({
-        "msg": `Usuário ${body.nome} inserido com sucesso`,
-        "usuario": newUser,
-        "erro": false
-      })
+      const newUser = await dao.cadastrarCliente(criaUsuario)
+      res.status(201).json(newUser)
     } catch (e) {
-      res.status(201).json(e.message)
+      console.log(e)
+      res.status(e.status).json(e.message)
     }
   },
 
@@ -43,29 +40,24 @@ const clienteController = {
     const body = req.body
     const id = req.params.id
     try {
-      const criaUsuario = clienteM(body.nome, body.telefone)
+      await dao.listarCliente(id)
+      const criaUsuario = clienteM(...Object.values(body))
       valida.validaUser(...Object.values(criaUsuario))
       const newUser = await dao.atualizarCliente(id, criaUsuario)
-      res.json({
-        "msg": `Usuário ${body.nome}, com id ${id} atualizado com sucesso`,
-        "usuario": newUser,
-        "erro": false
-      })
+      res.status(200).json(newUser)
     } catch (e) {
-      res.json(e.message)
+      res.status(e.status).json(e.message)
     }
   },
 
   deletarCliente : async (req, res) => {
     const id = req.params.id
     try {
-      await dao.deletarCliente(id)
-      res.json({
-        "msg": `Usuário ${id} deletado com sucesso!`,
-        "erro": "false"
-      })
+      await dao.listarCliente(id)
+      const result = await dao.deletarCliente(id)
+      res.status(200).json(result)
     } catch (e) {
-      res.json({
+      res.status(e.status).json({
         "msg": e.message,
         "erro": true
       })
