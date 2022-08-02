@@ -1,4 +1,4 @@
-const tatuagensModel  = (obj) => {
+const tatuagensModel = (obj) => {
     return {
         categoria: obj.categoria,
         link: obj.link,

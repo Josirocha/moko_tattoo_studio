@@ -83,7 +83,7 @@ const DATABASE_SCHEMA = [
 
 const Population = [
   {
-    entidade: "Tabela clientes populada!",
+    entidade: "Tabela Clientes Populada",
     query: `INSERT INTO CLIENTES (NOME, TELEFONE)
     VALUES 
         ('Eugênio Oliveira', '21-994785122'),
@@ -92,7 +92,7 @@ const Population = [
   },
 
   {
-    entidade: "Tabela tatuadores populada!",
+    entidade: "Tabela Tatuadores Populada",
     query: `INSERT INTO TATUADORES (NOME, TELEFONE)
     VALUES 
         ('Lucas Sampaio', '21-998875291'),
@@ -101,7 +101,7 @@ const Population = [
   },
 
   {
-    entidade: "Tabela agendamentos populada",
+    entidade: "Tabela Agendamentos Populada",
     query: `INSERT INTO AGENDAMENTOS (DATA, HORARIO, ID_CLIENTE, ID_TATUADOR)
     VALUES 
         ('2022-08-15', '14:00', 1, 2),
@@ -111,18 +111,18 @@ const Population = [
   },
 
   {
-    entidade: "Tabela tatuagens populada",
+    entidade: "Tabela Tatuagens Populada",
     query: `INSERT INTO TATUAGENS (CATEGORIA, LINK, ID_TATUADOR)
     VALUES 
-        ('Realismo','imagem1', 1),
-        ('Maori', 'imagem2', 2),
-        ('OldSchool', 'imagem3', 3),
-        ('Minimalista', 'imagem4', 2),
-        ('P&B', 'imagem5', 1);`
+        ('Realismo','https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2021/01/tatuagens-realistas-desenhos-impressionantes-para-te-inspirar-960x658.jpg', 1),
+        ('Maori', 'https://blog.pajaris.com.br/wp-content/uploads/2021/02/tatuagem-maori-26.jpg', 2),
+        ('OldSchool', 'https://www.minhatatuagem.com/wp-content/uploads/2020/01/tatuagem-oldschool-40.jpg', 3),
+        ('Minimalista', 'https://i.pinimg.com/736x/2a/68/19/2a6819b4edd68b25de51243e7f8bb5db.jpg', 2),
+        ('P&B', 'https://i.pinimg.com/736x/29/f3/8f/29f38ff01fea483e5807da7c532e3163.jpg', 1);`
   },
 
   {
-    entidade: "Tabela fornecedores populada",
+    entidade: "Tabela Fornecedores Populada",
     query: `INSERT INTO FORNECEDORES (NOME, TELEFONE, ENDERECO, EMAIL)
     VALUES 
         ('AGULHAS MIL LTDA', '21-912345678', 'Rua São Bento, nº 123', 'agulhasmil@gmail.com'),
@@ -131,7 +131,7 @@ const Population = [
   },
 
   {
-    entidade: "Tabela produtos populada",
+    entidade: "Tabela Produtos Populada",
     query: `INSERT INTO PRODUTOS (DESCRICAO, QUANTIDADE, VALOR, TIPO, ID_FORNECEDOR)
     VALUES 
         ('Agulhas de tatuagem', 178, 2.50, 'Materiais', 1),
