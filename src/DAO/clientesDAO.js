@@ -11,9 +11,15 @@ const dao = {
                 } else if ((!row) || row.length <= 0) {
                     reject({
                         "message": 'Usuário não encontrado',
+                        "status": 404,
                         "erro": true
                     })
-                } else {resolve(row)}
+                } else {resolve({
+                    "status": 200,
+                    "retorno" : {
+                        "dados" : row
+                    }
+                })}
             })
         })
     },
@@ -30,7 +36,7 @@ const dao = {
         })
     },
 
-    criarCliente : (usuario) => {
+    cadastrarCliente : (usuario) => {
         const query = `INSERT INTO CLIENTES (NOME, TELEFONE)
         VALUES (?, ?)`
 
@@ -39,7 +45,10 @@ const dao = {
                 if(error)
                     reject(error)
                 else
-                    resolve(row)
+                    resolve({
+                        "msg": `Usuário ${usuario.nome} inserido com sucesso`,
+                        "erro": false
+                      })
             })
         })
     },
@@ -52,7 +61,10 @@ const dao = {
                     if(error)
                         reject(error)
                     else
-                        resolve(novo)
+                        resolve({
+                            "msg": `Usuário ${novo.nome}, com id ${id} atualizado com sucesso`,
+                            "erro": false
+                          })
                 }
             )
         })  
@@ -66,7 +78,10 @@ const dao = {
                 if(error)
                         reject(error)
                     else
-                        resolve(row)
+                        resolve({
+                            "msg": `Usuário ${id} deletado com sucesso!`,
+                            "erro": "false"
+                          })
                 })
         })
     }
