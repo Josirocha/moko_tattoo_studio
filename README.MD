@@ -140,3 +140,104 @@ npm start
 	    "erro": "false"
     }
     ```
+
+    ### Tatuadores
+ * __GET /tatuadores__
+ <p>Lista todos os registros de pessoas tatuadoras cadastradas</p>
+<p>Esquema da resposta:</p>
+
+<pre>
+    <code>
+        {
+            "id": 1,
+            "nome": "Lucas Sampaio",
+            "telefone": "21-998875291"
+        },
+        {
+            "id": 2,
+            "nome": "Samantha Costa",
+            "telefone": "21-985662419"
+        },
+        {
+            "id": 3,
+            "nome": "Pablo Mendes",
+            "telefone": "21-975498842"
+        }
+    </code>
+</pre>
+	
+* __GET /tatuadores/:id__
+<p>Lista o registro da pessoa tatuadora cadastrada com determinado id. O número do id deve ser passado como parâmetro na rota.</p>
+<p>Esquema da resposta:</p>
+
+<pre>
+    <code>
+        {
+            "id": 6,
+            "nome": "Avoante",
+            "telefone": "21-123456789"
+        }
+    </code>
+</pre>
+
+* __POST /tatuadores__
+<p>Insere um registro de pessoa tatuadora. No <em>body</em> da requisição deve ser passado apenas <em>nome</em> e <em>telefone</em> como atributos, pois o id é gerado por autoincremento.</p>
+<p>Esquema da requisição:</p>
+
+<pre>
+    <code>
+        {
+            "nome": "Raquel Avoante",
+            "telefone": "21-123456789"
+        }
+    </code>
+</pre>
+
+<p>Esquema da resposta:</p>
+
+<pre>
+    <code>
+        {
+            "msg": "Pessoa tatuadora Raquel Avoante inserida com sucesso"
+        }
+    </code>
+</pre>
+
+* __PUT /tatuadores/:id__
+<p>Atualiza um registro específico de pessoa tatuadora com determinado id. O número do id deve ser passado como parâmetro na rota, e a requisição deve ter um <em>body</em>.</p>
+<p>Esquema da requisição:</p>
+
+<pre>
+    <code>
+        {
+            "nome": "Avoante",
+            "telefone": "85-123456789"
+        }
+    </code>
+</pre>
+
+Esquema da resposta:
+
+<pre>
+    <code>
+        {
+            "msg": "Pessoa tatuadora Avoante, com id 6, atualizada com sucesso",
+            "Pessoa tatuadora": {
+                "nome": "Avoante",
+                "telefone": "85-123456789"
+            }
+        }
+    </code>
+</pre>
+
+* __DELETE /tatuadores/:id__
+<p>Apaga um registro específico, conforme o id passado como parâmetro na rota.</p>
+<p>Esquema da resposta:</p>
+
+<pre>
+    <code>
+        {
+            "msg": "Pessoa tatuadora com 9 deletada com sucesso!"
+        }
+    </code>
+</pre>
