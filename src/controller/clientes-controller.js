@@ -26,7 +26,7 @@ const clienteController = {
   criarCliente: async (req, res) => {
     const body = req.body;
     try {
-      const criaUsuario = clienteM(body.nome, body.telefone)
+      const criaUsuario = clienteM(...Object.values(body))
       valida.validaUser(...Object.values(criaUsuario))
       const newUser = await dao.criarCliente(criaUsuario)
       res.json({
@@ -43,7 +43,7 @@ const clienteController = {
     const body = req.body
     const id = req.params.id
     try {
-      const criaUsuario = clienteM(body.nome, body.telefone)
+      const criaUsuario = clienteM(...Object.values(body))
       valida.validaUser(...Object.values(criaUsuario))
       const newUser = await dao.atualizarCliente(id, criaUsuario)
       res.json({
