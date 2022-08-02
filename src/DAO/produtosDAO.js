@@ -21,9 +21,13 @@ const dao = {
             db.get('SELECT * FROM PRODUTOS WHERE id = ?', id, (error, row) => {
                 if (error) {
                     reject(error)
-                } else {
-                    resolve(row)
-                }
+                } 
+                else if ((!row) || row.length <= 0) {
+                    reject({
+                        "message": 'Produto não encontrado',
+                        "erro": true
+                    })
+                } else {resolve(row)}
             })
         })
 
