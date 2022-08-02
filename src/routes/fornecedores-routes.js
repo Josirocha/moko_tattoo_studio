@@ -6,7 +6,10 @@ const router = express.Router();
 
 router
     .get("/fornecedores", fornecedoresController.pegaFornecedores)
-    // .get("produtos/:descricao", )
+    .get("/fornecedores/:id", fornecedoresController.pegaFornecedoresId)
+    .post("/fornecedores", fornecedoresController.criarFornecedores)
+    .put("/fornecedores/:id", fornecedoresController.atualizarFornecedores)
+    .delete("/fornecedores/:id", fornecedoresController.deletaForcenedores)
 
 
 export default router;
