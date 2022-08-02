@@ -17,7 +17,7 @@ const dao = {
                 } else {resolve({
                     "status": 200,
                     "retorno" : {
-                        "dados" : row
+                    "dados" : row
                     }
                 })}
             })
