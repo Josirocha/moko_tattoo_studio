@@ -241,3 +241,104 @@ Esquema da resposta:
         }
     </code>
 </pre>
+
+### 💻 Fornecedores
+ * __GET /fornecedores__
+
+    Retorna todos os dados do banco. Esquema da resposta:
+    ```json
+        {
+            "fornecedores": [
+                {
+                    "id": 1,
+                    "nome": "AGULHAS MIL LTDA",
+                     "telefone": "21-912345678",
+                     "endereco": "Rua São Bento, nº 123",
+                     "email": "agulhasmil@gmail.com"
+                },
+            {
+                "id": 2,
+                "nome": "ELECTRIC INK",
+                "telefone": "21-998741145",
+                "endereco": "Av. Mario Cruz, nº 2002",
+                "email": "eletricink@gmail.com"
+            },
+            {
+                "id": 3,
+                "nome": "CAPITAL PIERCING",
+                "telefone": "21-998663347",
+                "endereco": "Rua João de Barro, nº 198",
+                "email": "capitalpiercing@gmail.com"
+            }
+        ],
+    }
+    ```
+ * __GET /fornecedoresId/id/{id}__
+
+    Retorna o fornecedor correspondente ao id. Esquema da resposta: 
+    ```json
+    {
+        "fornecedores": [
+            {
+                "id": 2,
+            "nome": "ELECTRIC INK",
+            "telefone": "21-998741145",
+            "endereco": "Av. Mario Cruz, nº 2002",
+            "email": "eletricink@gmail.com"
+            },
+        ],
+    }
+    ```
+ * __POST /fornecedores__
+
+    Insere um fornecedor na base de dados. Esquema da requisição:
+    ```json
+    {
+        "nome": "POMADAS",
+        "telefone": "21-912345678",
+        "endereco": "Rua São Bento, nº 123",
+        "email": "agulhasmil@gmail.com"
+    }
+    ```
+
+    Esquema da resposta
+    ```json
+    {
+          "msg": "Fornecedor POMADAS inserido com sucesso"
+        
+    }
+    ```
+* __PUT /fornecedores/id/{id}__
+
+    Atualiza um fornecedor de acordo com o id. Esquema da requisição:
+    ```json
+    {
+        "nome": "LUVAS",
+        "telefone": "21-912345678",
+        "endereco": "Rua São Bento, nº 123",
+        "email": "luvasmil@gmail.com"
+    }
+    ```
+    Esquema da resposta:
+    ```json
+    {
+       
+    "msg": "Fornecedor LUVAS, com id 1, atualizado com sucesso",
+    "Fornecedor": {
+        "nome": "LUVAS",
+        "telefone": "21-912345678",
+        "endereco": "Rua São Bento, nº 123",
+        "email": "luvasmil@gmail.com"
+	},
+	"erro": false
+    }
+    ```
+* __DELETE  /fornecedores/id/{id}__
+
+    Deleta um fornecedor de acordo com o id. Esquema da resposta:
+    ```json
+    {
+         "msg": "Fornecedor4 deletado com sucesso!"
+	    "erro": "false"
+    }
+    ```
