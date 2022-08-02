@@ -24,11 +24,12 @@ const tatuagensController = {
   guardarImagens: async (req, res) => {
     const body = req.body;
     try {
-      const criaTattoo = tatuagens(body.categoria, body.link, body.id_tatuador);
+      const criaTattoo = tatuagens(body);
+      console.log(criaTattoo)
       const novo = await dao.criarTatuagem(criaTattoo);
       res.json({
         msg: `Imagem da categoria: ${body.categoria} do tatuador id: ${body.id_tatuador} foi inserida com sucesso`,
-        Tatuagem: novo,
+        tatuagem: novo,
         erro: false,
       });
     } catch (e) {
@@ -40,15 +41,11 @@ const tatuagensController = {
     const body = req.body;
     const id = req.params.id;
     try {
-      const alteraImagem = tatuagens(
-        body.categoria,
-        body.link,
-        body.id_tatuador
-      );
+      const alteraImagem = tatuagens(body);
       const novo = await dao.ajustaTatuagem(id, alteraImagem);
       res.json({
         msg: `Imagem da ${body.categoria}, com id ${id} atualizada com sucesso`,
-        usuario: novo,
+        tatuagem: novo,
         erro: false,
       });
     } catch (e) {

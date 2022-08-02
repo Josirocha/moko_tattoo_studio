@@ -26,12 +26,11 @@ const dao = {
         })
     },
 
-    criarTatuagem : (categoria, link) => {
-        const criaTattoo = `INSERT INTO TATUAGENS (CATEGORIA, LINK)
-        VALUES (?, ?)`
+    criarTatuagem : (obj) => {
+        const criaTattoo = `INSERT INTO TATUAGENS (CATEGORIA, LINK, ID_TATUADOR) VALUES (?, ?, ? )`
 
         return new Promise((resolve, reject)=>{
-            db.run(criaTattoo, [categoria, link], (error,row) => {
+            db.run(criaTattoo,...Object.values(obj), (error,row) => {
                 if(error)
                     reject(error)
                 else
@@ -40,10 +39,10 @@ const dao = {
         })
     }, 
 
-    ajustaTatuagem: (id) => {
-        const ajustaTattoo = `UPDATE TATUAGENS SET categoria = ?, link = ? WHERE id_tatuador = ?`
+    ajustaTatuagem: (id, alteraImagem) => {
+        const ajustaTattoo = `UPDATE TATUAGENS SET categoria = ?, link = ?, id_tatuador = ? WHERE id = ?`
         return new Promise((resolve, reject)=>{
-           db.run(ajustaTattoo, id, (error,row) => {
+           db.run(ajustaTattoo, ...Object.values(alteraImagem), id , (error,row) => {
                 if(error)
                     reject(error)
                 else
