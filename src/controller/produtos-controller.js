@@ -1,5 +1,6 @@
 import dao from "../DAO/produtosDAO.js";
 import ProdutosM from "../model/produtos.js";
+import { validaCampo } from "../services/validacaoProdutos.js";
 
 const produtosController = {
 
@@ -26,6 +27,7 @@ const produtosController = {
     const body = req.body;
     try {
       const criaProduto = ProdutosM(body.descricao, body.quantidade, body.valor, body.tipo, body.id_fornecedor);
+      validaCampo(...Object.values(criaProduto))
       const novoProduto = await dao.criarProdutos(criaProduto);
       res.json({
         msg: `${body.descricao} inserido com sucesso`,
@@ -42,6 +44,7 @@ const produtosController = {
     const id = req.params.id
     try {
       const criarProduto = ProdutosM(body.descricao, body.quantidade, body.valor, body.tipo, body.id_fornecedor)
+      validaCampo(...Object.values(criarProduto))
       const novoProduto = await dao.atualizarProduto(id, criarProduto)
       res.json({
         "msg": `${body.descricao}, com id ${id} atualizado com sucesso`,
