@@ -1,5 +1,6 @@
 import dao from "../DAO/tatuagensDAO.js";
 import tatuagens from "../model/tatuagens.js";
+import validaCampo from "../services/validacaoTatto.js";
 
 const tatuagensController = {
   imagensTattoo: async (req, res) => {
@@ -25,7 +26,7 @@ const tatuagensController = {
     const body = req.body;
     try {
       const criaTattoo = tatuagens(body);
-      console.log(criaTattoo)
+      validaCampo.valida(...Object.values(criaTattoo))
       const novo = await dao.criarTatuagem(criaTattoo);
       res.json({
         msg: `Imagem da categoria: ${body.categoria} do tatuador id: ${body.id_tatuador} foi inserida com sucesso`,
@@ -42,6 +43,7 @@ const tatuagensController = {
     const id = req.params.id;
     try {
       const alteraImagem = tatuagens(body);
+      validaCampo.valida(...Object.values(alteraImagem))
       const novo = await dao.ajustaTatuagem(id, alteraImagem);
       res.json({
         msg: `Imagem da ${body.categoria}, com id ${id} atualizada com sucesso`,
