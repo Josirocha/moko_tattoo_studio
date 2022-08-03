@@ -17,7 +17,6 @@ const agendamentosController = {
         }
     },
 
-    // ATUALIZA UM AGENDAMENTO
     atualizarAgendamento: async (req, res) => {
         try {
             const id = req.params.id

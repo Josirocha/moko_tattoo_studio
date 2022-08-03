@@ -566,3 +566,112 @@ npm start
     "erro": "false"
   }
   ```
+
+  ### 🗓️Agendamentos
+  
+
+- **GET /agendamentos**
+
+  Retorna todos os dados do banco. Esquema da resposta:
+
+  ```json
+	{
+		"id": 1,
+		"data": "2022-08-15",
+		"horario": "14:00",
+		"id_cliente": 1,
+		"id_tatuador": 2
+	},
+	{
+		"id": 2,
+		"data": "2022-08-18",
+		"horario": "15:00",
+		"id_cliente": 2,
+		"id_tatuador": 3
+	},
+	{
+		"id": 3,
+		"data": "2022-08-19",
+		"horario": "13:00",
+		"id_cliente": 3,
+		"id_tatuador": 1
+	},
+	{
+		"id": 4,
+		"data": "2022-08-30",
+		"horario": "09:00",
+		"id_cliente": 1,
+		"id_tatuador": 2
+	}
+  ```
+
+- **GET /agendamentos/{id}**
+
+  Retorna o agendamento correspondente ao id.
+
+   Esquema da resposta:
+
+ ```json
+  {
+	"id": 1,
+	"data": "2022-08-15",
+	"horario": "14:00",
+	"id_cliente": 1,
+	"id_tatuador": 2
+
+```
+
+- **POST /agendamentos**
+
+  Insere um agendamento na base de dados. Esquema da requisição:
+
+  ```json
+  {
+    "data": "2022-08-30",
+		"horario": "19:00",
+		"id_cliente": 1,
+		"id_tatuador": 2
+  }
+  ```
+
+  Esquema da resposta
+
+  ```json
+  {
+    "mensagem": "Agendamento  inserido com sucesso",
+   
+  }
+  ```
+
+- **PUT /agendamentos/{id}**
+
+  Atualiza um agendamento de acordo com o id. Esquema da requisição:
+
+  ```json
+  {
+    "data": "2022-08-30",
+		"horario": "20:00",
+		"id_cliente": 3,
+		"id_tatuador": 1
+  }
+  ```
+
+  Esquema da resposta:
+
+  ```json
+  {
+    "msg": "Agendamento com id 3 atualizado com sucesso"
+    
+  }
+  ```
+
+- **DELETE /agendamentos/{id}**
+
+  Deleta um agendamento de acordo com o id. Esquema da resposta:
+
+  ```json
+  {
+    "msg": "Agendamento com id 3 deletado com sucesso"
+  
+  }
+  ```

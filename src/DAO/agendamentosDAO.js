@@ -17,7 +17,7 @@ const agendamentosDAO = {
 
     pegaUmAgendamento: (id) => {
         return new Promise((resolve, reject) => {
-            db.get('SELECT * FROM AGENDAMENTOS WHERE idAgenda = ?', id,
+            db.get('SELECT * FROM AGENDAMENTOS WHERE id = ?', id,
                 (erro, dado) => {
                     if (erro) {
                         reject(erro)
@@ -30,7 +30,7 @@ const agendamentosDAO = {
     },
     deletaAgendamentos: (id) => {
         return new Promise((resolve, reject) => {
-            db.run(`DELETE FROM AGENDAMENTOS WHERE idAgenda = ?`, id,
+            db.run(`DELETE FROM AGENDAMENTOS WHERE id = ?`, id,
                 (erro) => {
                     if (erro) {
                         reject(erro)
@@ -42,15 +42,14 @@ const agendamentosDAO = {
     },
 
     insereAgendamento: (agendamento) => {
-        console.log('dados', agendamento);
         return new Promise((resolve, reject) => {
-            db.run(`INSERT INTO AGENDAMENTOS (DATA, HORARIO,IDCLIENTE,IDTATUADOR)
-            VALUES (?, ?, ?, ?)`, agendamento.data, agendamento.horario, agendamento.idCliente, agendamento.idTatuador,
+            db.run(`INSERT INTO AGENDAMENTOS (DATA, HORARIO,ID_CLIENTE,ID_TATUADOR)
+            VALUES (?, ?, ?, ?)`, agendamento.data, agendamento.horario, agendamento.id_cliente, agendamento.id_tatuador,
                 (erro) => {
                     if (erro) {
                         reject(erro)
                     } else {
-                        resolve("Agendamento inserido com sucesso")
+                        resolve(`Agendamento  inserido com sucesso`)
                     }
                 })
         })
@@ -61,9 +60,9 @@ const agendamentosDAO = {
         const query = []
         const novoDado = []
 
-        if (agendamento.idCliente) {
-            query.push(' idCliente = ? ')
-            novoDado.push(agendamento.idCliente)
+        if (agendamento.id_cliente) {
+            query.push(' id_cliente = ? ')
+            novoDado.push(agendamento.id_cliente)
         }
         if (agendamento.data) {
             query.push(' data = ? ')
@@ -74,18 +73,18 @@ const agendamentosDAO = {
             query.push(' horario = ? ')
             novoDado.push(agendamento.horario)
         }
-        if (agendamento.idTatuador) {
-            query.push(' idTatuador = ? ')
-            novoDado.push(agendamento.idTatuador)
+        if (agendamento.id_Tatuador) {
+            query.push(' id_Tatuador = ? ')
+            novoDado.push(agendamento.id_tatuador)
         }
 
         return new Promise((resolve, reject) => {
-            db.run(`UPDATE agendamentos SET ${query.join(',')} WHERE idAgenda = ? `, ...novoDado, id,
+            db.run(`UPDATE agendamentos SET ${query.join(',')} WHERE id = ? `, ...novoDado, id,
                 (erro) => {
                     if (erro) {
                         reject(erro)
                     } else {
-                        resolve("Agendamento atualizado com sucesso")
+                        resolve(`Agendamento com id ${id} atualizado com sucesso`)
                     }
                 })
         })
