@@ -1,3 +1,4 @@
+import e from "express"
 import db from "../database/database.js"
 
 const dao = {
@@ -47,6 +48,7 @@ const dao = {
                 else
                     resolve({
                         "msg": `Usuário ${usuario.nome} inserido com sucesso`,
+                        "user": row,
                         "erro": false
                       })
             })

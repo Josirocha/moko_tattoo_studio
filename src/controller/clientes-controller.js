@@ -31,8 +31,7 @@ const clienteController = {
       const newUser = await dao.cadastrarCliente(criaUsuario)
       res.status(201).json(newUser)
     } catch (e) {
-      console.log(e)
-      res.status(e.status).json(e.message)
+      res.status(400).json(e.message)
     }
   },
 

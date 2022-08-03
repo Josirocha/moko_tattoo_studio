@@ -18,18 +18,19 @@ describe('Rotas de Usuário', () => {
         const res = await request(app).post('/clientes').send(mock)
         expect(res.status).toBe(201)
     })
-
+    
     // test("Test POST com um mesmo usuário", async ()=>{
-    //     const res = await request(app).post('/clientes').send(mock)
+    //     const tamanho = await request(app).get('/clientes')
+    //     const res = await request(app).post('/clientes/:id').send(tamanho.body.length)
     //     expect(res.status).toBe(400)
     // })
 
-    test("Test GET um usuario", async ()=>{
-        const res = await request(app).get(`/clientes/${mock.id}`)
-        console.log(res)
-        expect(res.status).toBe(200)
-        expect(res.body.clientes.id).toBe(mock.id)
-    })
+    // test("Test GET um usuario", async ()=>{
+    //     const res = await request(app).get(`/clientes/${mock.id}`)
+    //     console.log(res)
+    //     expect(res.status).toBe(200)
+    //     expect(res.body.clientes.id).toBe(mock.id)
+    // })
 
     // test("Rota GET um usuario que não existe", async ()=>{
     //     const res = await request(app).get(`/clientes`)
