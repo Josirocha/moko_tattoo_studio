@@ -1,4 +1,4 @@
-# Moko Tattoo Studio
+# 🐉 API - Moko Tattoo Studio
 
 Projeto de final de módulo do curso de Web Dev Full Stack da [Resilia Educação](https://www.resilia.com.br/) referente ao Módulo 4.
 
@@ -51,7 +51,7 @@ npm start
 
 ## :pencil: Rotas HTTP implementadas
 
-### Produtos
+### 📦Produtos
 
 - **GET /produtos**
 
@@ -162,15 +162,14 @@ npm start
     "erro": "false"
   }
   ```
+### 🎨Tatuadores
 
-  ### Tatuadores
+  - **GET /tatuadores**
+     <p>Lista todos os registros de pessoas tatuadoras cadastradas</p>
+    <p>Esquema da resposta:</p>
 
-- **GET /tatuadores**
- <p>Lista todos os registros de pessoas tatuadoras cadastradas</p>
-<p>Esquema da resposta:</p>
-
-<pre>
-    <code>
+    ```json
+       
         {
             "id": 1,
             "nome": "Lucas Sampaio",
@@ -186,84 +185,76 @@ npm start
             "nome": "Pablo Mendes",
             "telefone": "21-975498842"
         }
-    </code>
-</pre>
+     ```
 
 - **GET /tatuadores/:id**
-<p>Lista o registro da pessoa tatuadora cadastrada com determinado id. O número do id deve ser passado como parâmetro na rota.</p>
-<p>Esquema da resposta:</p>
 
-<pre>
-    <code>
-        {
-            "id": 6,
-            "nome": "Avoante",
-            "telefone": "21-123456789"
-        }
-    </code>
-</pre>
+  <p>Lista o registro da pessoa tatuadora cadastrada com determinado id. O número do id deve ser passado como parâmetro na rota.</p>
+
+  <p>Esquema da resposta:</p>
+
+  ```json
+          {
+              "id": 6,
+              "nome": "Avoante",
+              "telefone": "21-123456789"
+          }
+  ```
 
 - **POST /tatuadores**
-<p>Insere um registro de pessoa tatuadora. No <em>body</em> da requisição deve ser passado apenas <em>nome</em> e <em>telefone</em> como atributos, pois o id é gerado por autoincremento.</p>
-<p>Esquema da requisição:</p>
+  <p>Insere um registro de pessoa tatuadora. 
+  
+  No <em>body</em> da requisição deve ser passado apenas <em>nome</em> e <em>telefone</em> como atributos, pois o id é gerado por autoincremento.</p>
 
-<pre>
-    <code>
-        {
-            "nome": "Raquel Avoante",
-            "telefone": "21-123456789"
-        }
-    </code>
-</pre>
+  <p>Esquema da requisição:</p>
 
-<p>Esquema da resposta:</p>
+  ```json
+          {
+              "nome": "Raquel Avoante",
+              "telefone": "21-123456789"
+          }
+  ```
 
-<pre>
-    <code>
-        {
-            "msg": "Pessoa tatuadora Raquel Avoante inserida com sucesso"
-        }
-    </code>
-</pre>
+  <p>Esquema da resposta:</p>
+
+  ```json
+          {
+              "msg": "Pessoa tatuadora Raquel Avoante inserida com sucesso"
+          }
+  ```
 
 - **PUT /tatuadores/:id**
-<p>Atualiza um registro específico de pessoa tatuadora com determinado id. O número do id deve ser passado como parâmetro na rota, e a requisição deve ter um <em>body</em>.</p>
-<p>Esquema da requisição:</p>
+  <p>Atualiza um registro específico de pessoa tatuadora com determinado id. O número do id deve ser passado como parâmetro na rota, e a requisição deve ter um <em>body</em>.</p>
+  <p>Esquema da requisição:</p>
 
-<pre>
-    <code>
-        {
-            "nome": "Avoante",
-            "telefone": "85-123456789"
-        }
-    </code>
-</pre>
+  ```json
+          {
+              "nome": "Avoante",
+              "telefone": "85-123456789"
+          }
+  ```
 
-Esquema da resposta:
+  Esquema da resposta:
 
-<pre>
-    <code>
-        {
-            "msg": "Pessoa tatuadora Avoante, com id 6, atualizada com sucesso",
-            "Pessoa tatuadora": {
-                "nome": "Avoante",
-                "telefone": "85-123456789"
-            }
-        }
-    </code>
-</pre>
+  ```json
+          {
+              "msg": "Pessoa tatuadora Avoante, com id 6, atualizada com sucesso",
+              "Pessoa tatuadora": {
+                  "nome": "Avoante",
+                  "telefone": "85-123456789"
+              }
+          }
+  ```
 
 - **DELETE /tatuadores/:id**
-<p>Apaga um registro específico, conforme o id passado como parâmetro na rota.</p>
-<p>Esquema da resposta:</p>
+  <p>Apaga um registro específico, conforme o id passado como parâmetro na rota.</p>
+  <p>Esquema da resposta:</p>
 
-<pre>
-    <code>
-        {
-            "msg": "Pessoa tatuadora com 9 deletada com sucesso!"
-        }
-    </code>
-</pre>
+  ```json
+          {
+              "msg": "Pessoa tatuadora com 9 deletada com sucesso!"
+          }
+  ```
 
 ### 💻 Fornecedores
 
@@ -372,8 +363,8 @@ Esquema da resposta:
 
   ```json
   {
-       "msg": "Fornecedor4 deletado com sucesso!"
-    "erro": "false"
+       "msg": "Fornecedor4 deletado com sucesso!",
+       "erro": "false"
   }
   ```
 
@@ -469,4 +460,109 @@ Esquema da resposta:
     "msg": "Usuário 1 deletado com sucesso!",
     "erro": "false"
     }
+  ```
+  
+### 📸 Tatuagens
+
+- **GET/tatuagens**
+
+  <p>Retorna todos os dados do banco.<p>
+   Esquema da resposta:
+
+  ```json
+      {
+        {
+          "id": 1,
+          "categoria": "Realismo",
+          "link": "https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2021/01/tatuagens-realistas-desenhos-impressionantes-para-te-inspirar-960x658.jpg",
+          "id_tatuador": 1
+      },
+      {
+          "id": 2,
+          "categoria": "Maori",
+          "link": "https://blog.pajaris.com.br/wp-content/uploads/2021/02/tatuagem-maori-26.jpg",
+          "id_tatuador": 2
+      },
+      {
+          "id": 3,
+          "categoria": "OldSchool",
+          "link": "https://www.minhatatuagem.com/wp-content/uploads/2020/01/tatuagem-oldschool-40.jpg",
+          "id_tatuador": 3
+      }
+
+  }
+  ```
+
+- **GET /tatuagens/{id}**
+
+  <p> Retorna a imagem correspondente ao id.<p> 
+  Esquema da resposta:
+
+  ```json
+  {
+      {
+      "id": 1,
+      "categoria": "Realismo",
+      "link": "https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2021/01/tatuagens-realistas-desenhos-impressionantes-para-te-inspirar-960x658.jpg",
+      "id_tatuador": 1
+      }
+  }
+  ```
+
+- **POST /tatuagens**
+
+  <p>Insere uma tatuagem na base de dados.<p> 
+  
+  Esquema da requisição:
+
+  ```json
+  {
+    {
+    "categoria": "Aquarela",
+    "link": "https://s3-blog.tattoo2me.com/wp-content/uploads/2020/01/1*c0c4SlsntfZ9Dl1uxTO-hQ.jpeg",
+    "id_tatuador": "2"
+    }
+  } 
+  ```
+  Esquema da resposta
+
+  ```json
+    {
+    "msg": "Imagem da categoria: Aquarela do tatuador id: 2 foi inserida com sucesso",
+    "erro": false
+  }
+  ```
+
+- **PUT /tatuagens/{id}**
+
+  <p>Atualiza uma imagem de acordo com o id.<p>
+  Esquema da requisição:
+
+  ```json
+    {
+    "categoria": "Aquarela",
+    "link": "https://s3-blog.tattoo2me.com/wp-content/uploads/2020/01/1*c0c4SlsntfZ9Dl1uxTO-hQ.jpeg",
+    "id_tatuador": "3"
+    }
+  ```
+
+  Esquema da resposta:
+
+  ```json
+    {
+    "msg": "Imagem da Aquarela, com id 6 atualizada com sucesso",
+    "erro": false
+    }
+  ```
+
+- **DELETE /tatuagens/{id}**
+
+    <p>Deleta uma imagem de acordo com o id.<p> 
+    Esquema da resposta:
+
+  ```json
+   {
+    "msg": "Imagem do id 6 deletada com sucesso!",
+    "erro": "false"
+  }
   ```
