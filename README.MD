@@ -14,6 +14,9 @@ Projeto realizado utilizando o [Node.js](https://nodejs.org/en/) com framework [
 - [Express](https://expressjs.com/) - v. 4.18.1
 - [Nodemon](https://www.npmjs.com/package/nodemon) - v. 2.0.19
 - [SQLite](https://www.npmjs.com/package/sqlite3) - v. 5.0.10
+- [Cors](https://www.npmjs.com/package/cors) - v. 2.8.5
+- [Jest](https://www.npmjs.com/package/jest) - v. 28.1.3
+- [SuperTest](https://www.npmjs.com/package/supertest) - v. 6.2.4
 
 ## :rocket: Instalação da Aplicação
 
