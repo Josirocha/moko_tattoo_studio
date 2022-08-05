@@ -26,7 +26,7 @@ const produtosController = {
   criarProduto: async (req, res) => {
     const body = req.body;
     try {
-      const criaProduto = ProdutosM(body.descricao, body.quantidade, body.valor, body.tipo, body.id_fornecedor);
+      const criaProduto = ProdutosM(...Object.values(body));
       validaCampo(...Object.values(criaProduto))
       const novoProduto = await dao.criarProdutos(criaProduto);
       res.json({
@@ -43,7 +43,7 @@ const produtosController = {
     const body = req.body
     const id = req.params.id
     try {
-      const criarProduto = ProdutosM(body.descricao, body.quantidade, body.valor, body.tipo, body.id_fornecedor)
+      const criarProduto = ProdutosM(...Object.values(body));
       validaCampo(...Object.values(criarProduto))
       const novoProduto = await dao.atualizarProduto(id, criarProduto)
       res.json({
