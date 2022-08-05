@@ -566,3 +566,16 @@ npm start
     "erro": "false"
   }
   ```
+
+  ## Time de desenvolvimento
+
+  - [Alonso Estevam](https://www.linkedin.com/in/alonso-estevam/)
+  - [Beatriz Mioranza](https://www.linkedin.com/in/beatrizmioranza/)
+  - [Erika Rodrigues](https://www.linkedin.com/in/erikatav-rodrigues/)
+  - [Josiane Rocha](https://www.linkedin.com/in/josiane-r-s-lima-santos/)
+  - [Pedro Garrido](https://www.linkedin.com/in/pedro-garrido-1a8482205/)
+  - [Rômulo Miranda](https://www.linkedin.com/in/romulo-omiranda/)
+  
+
+<hr>
+
