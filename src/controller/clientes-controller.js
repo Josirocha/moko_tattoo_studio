@@ -9,7 +9,10 @@ const clienteController = {
       const resposta = await dao.listarClientes();
       res.status(200).json(resposta);
     } catch (e) {
-      res.status(400).json(e.message);
+      res.status(400).json({
+        "msg" : e.message,
+        "erro" : "true"
+      });
     }
   },
 
@@ -19,7 +22,10 @@ const clienteController = {
       const resposta = await dao.listarCliente(id);
       res.status(resposta.status).json(resposta.retorno);
     } catch (e) {
-      res.status(e.status).json(e.message);
+      res.status(e.status).json({
+        "msg" : e.message,
+        "erro" : "true"
+      });
     }
   },
 
@@ -31,8 +37,10 @@ const clienteController = {
       const newUser = await dao.cadastrarCliente(criaUsuario)
       res.status(201).json(newUser)
     } catch (e) {
-      console.log(e)
-      res.status(e.status).json(e.message)
+      res.status(400).json({
+        "msg" : e.message,
+        "erro" : "true"
+      })
     }
   },
 
@@ -46,7 +54,10 @@ const clienteController = {
       const newUser = await dao.atualizarCliente(id, criaUsuario)
       res.status(200).json(newUser)
     } catch (e) {
-      res.status(e.status).json(e.message)
+      res.status(e.status).json({
+       "msg" : e.message,
+       "erro" : "true"
+      })
     }
   },
 

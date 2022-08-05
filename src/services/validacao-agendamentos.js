@@ -8,8 +8,8 @@ export const validaId = (id) => {
 export const validaAgendamento = (agendamento) => {
     if (
         !agendamento ||
-        isNaN(agendamento.idCliente) ||
-        isNaN(agendamento.idTatuador) ||
+        isNaN(agendamento.id_cliente) ||
+        isNaN(agendamento.id_tatuador) ||
         typeof agendamento.data !== 'string' ||
         typeof agendamento.horario !== 'string'
     ) {
@@ -21,10 +21,10 @@ export const validaAtualizaAgendamento = (agendamento) => {
     if (
         !agendamento ||
         !Object.values(agendamento).length ||
-        (agendamento.idCliente && isNaN(agendamento.idCliente)) ||
-        (agendamento.idTatuador && isNaN(agendamento.idTatuador)) ||
-        (agendamento.idTatuador && typeof agendamento.data !== 'string') ||
-        (agendamento.idTatuador && typeof agendamento.horario !== 'string')
+        (agendamento.id_cliente && isNaN(agendamento.id_cliente)) ||
+        (agendamento.id_tatuador && isNaN(agendamento.id_tatuador)) ||
+        (agendamento.data && typeof agendamento.data !== 'string') ||
+        (agendamento.horario && typeof agendamento.horario !== 'string')
     ) {
         throw new Error("dados inválidos")
     }
