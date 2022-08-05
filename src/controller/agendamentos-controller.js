@@ -22,7 +22,7 @@ const agendamentosController = {
             const id = req.params.id
             const dados = req.body
             const mensagem = await agendamentoModel.atualizaAgendamento(id, dados)
-            res.status(200).json(mensagem)
+            res.status(200).json({msg: mensagem})
             res.json()
         } catch (error) {
             res.status(404).json(
@@ -38,7 +38,7 @@ const agendamentosController = {
         try {
             const id = req.params.id
             const mensagem = await agendamentoModel.deletaAgendamento(id)
-            res.status(201).send(mensagem)
+            res.status(201).json({msg: mensagem})
         } catch (error) {
             res.status(404).json(
                 {
