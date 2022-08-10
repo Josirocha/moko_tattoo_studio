@@ -6,7 +6,7 @@ const agendamentosController = {
         try {
             const dados = req.body
             const mensagem = await agendamentoModel.insereAgendamento(dados)
-            res.status(200).json(mensagem)
+            res.status(200).json({msg: mensagem})
 
         } catch (error) {
             res.status(400).json(
