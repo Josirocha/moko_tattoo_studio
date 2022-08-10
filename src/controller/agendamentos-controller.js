@@ -51,7 +51,7 @@ const agendamentosController = {
     pegaAgendamento: async (req, res) => {
         try {
             const todosAgendamentos = await agendamentoModel.pegaAgendamentos()
-            res.status(200).json(todosAgendamentos)
+            res.status(200).json({agendamentos:todosAgendamentos})
         } catch (error) {
             res.status(404).json(
                 {
