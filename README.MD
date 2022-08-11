@@ -371,29 +371,30 @@ npm start
 
 ### 👨‍👩‍👧‍👦 Clientes
 
-- **GET /fornecedores**
+- **GET /clientes**
 
   Retorna todos os dados do banco. Esquema da resposta:
 
   ```json
       {
+      "Usuarios": [
           {
-      "id": 1,
-      "nome": "Eugênio Oliveira",
-      "telefone": "21-994785122"
-  },
-  {
-      "id": 2,
-      "nome": "Olívia Ribeiro",
-      "telefone": "21-988796335"
-  },
-  {
-      "id": 3,
-      "nome": "Mirtes Faria Lima",
-      "telefone": "21-974659987"
-  }
-
-  }
+              "id": 1,
+              "nome": "Eugênio Oliveira",
+              "telefone": "21-994785122"
+          },
+          {
+              "id": 2,
+              "nome": "Olívia Ribeiro",
+              "telefone": "21-988796335"
+          },
+          {
+              "id": 3,
+              "nome": "Mirtes Faria Lima",
+              "telefone": "21-974659987"
+          }
+      ]
+    }
   ```
 
 - **GET /clientes/{id}**
@@ -427,8 +428,10 @@ npm start
 
   ```json
     {
-    "msg": "Usuário Manuela Esteves inserido com sucesso",
-    "erro": false
+      "newUser": {
+          "msg": "Usuário Manuela Esteves inserido com sucesso",
+          "erro": false
+      }
     }
   ```
 
