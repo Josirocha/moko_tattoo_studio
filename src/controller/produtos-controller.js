@@ -7,7 +7,7 @@ const produtosController = {
   verProdutos: async (req, res) => {
     try {
       const resposta = await dao.verProdutos();
-      res.status(200).json(resposta);
+      res.status(200).json({produtos: resposta});
     } catch (e) {
       res.status(400).json(e.message);
     }
@@ -17,7 +17,7 @@ const produtosController = {
     const id = req.params.id
     try {
       const resposta = await dao.verUmProduto(id);
-      res.status(200).json(resposta);
+      res.status(200).json({produto: resposta});
     } catch (e) {
       res.status(404).json(e.message);
     }
