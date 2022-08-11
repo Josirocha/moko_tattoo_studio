@@ -64,20 +64,20 @@ npm start
   {
     "produtos": [
       {
-        "ID": 1,
-        "DESCRICAO": "Tinta preta",
-        "QUANTIDADE": 20,
-        "VALOR": 29.9,
-        "TIPO": "Materiais",
-        "ID_FORNECEDOR": 1
+        "id": 1,
+			  "descricao": "Agulhas de tatuagem",
+			  "quantidade": 178,
+			  "valor": 2.5,
+			  "tipo": "Materiais",
+			  "id_fornecedor": 1
       },
       {
-        "ID": 2,
-        "DESCRICAO": "Piercing nariz",
-        "QUANTIDADE": 28,
-        "VALOR": 39.99,
-        "TIPO": "Materiais",
-        "ID_FORNECEDOR": 3
+        "id": 2,
+			  "descricao": "Tinta preta",
+			  "quantidade": 52,
+			  "valor": 30.99,
+			  "tipo": "Materiais",
+			  "id_fornecedor": 2
       }
     ]
   }
@@ -89,16 +89,14 @@ npm start
 
   ```json
   {
-    "produtos": [
-      {
-        "ID": 4,
-        "DESCRICAO": "Papel toalha",
-        "QUANTIDADE": 20,
-        "VALOR": 3.2,
-        "TIPO": "Materiais",
-        "ID_FORNECEDOR": 2
-      }
-    ]
+    "produto": {
+      "id": 16,
+		  "descricao": "Tinta branca",
+		  "quantidade": 45,
+		  "valor": 80,
+		  "tipo": "Materiais",
+		  "id_fornecedor": 2
+    }
   }
   ```
 
