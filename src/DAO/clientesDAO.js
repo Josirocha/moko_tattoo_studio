@@ -1,4 +1,3 @@
-import e from "express"
 import db from "../database/database.js"
 
 const dao = {
