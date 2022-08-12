@@ -42,13 +42,25 @@ const tatuadoresDAO = {
     },
 
     atualizarTatuador : (id, novo) => {
-        const query = `UPDATE TATUADORES SET nome = ?, telefone = ? WHERE id = ?`
-        return new Promise((resolve, reject)=>{
-            db.run(query, ...Object.values(novo), id, (error) => {
-                    if(error)
+        const query = (novo) => {
+            let nome = "";
+            let telefone = "";
+        
+            if (novo.nome) {
+                nome = `nome = ?`
+            }
+            if (novo.telefone) {
+                telefone = `telefone = ?`
+            }
+            return `UPDATE TATUADORES SET ${nome} = ?, ${telefone} = ? WHERE id = ?`
+        }
+        return new Promise( (resolve, reject) => {
+            db.run(query(novo), ...Object.values(novo), id, (error) => {
+                    if(error) {
                         reject(error)
-                    else
-                        resolve(novo)
+                    } else {
+                        resolve(`Pessoa tatuadora de id ${id} atualizada com sucesso!`)
+                    }
                 }
             )
         })  
@@ -56,14 +68,14 @@ const tatuadoresDAO = {
 
     deletarTatuador : (id) => {
         const query = `DELETE FROM TATUADORES WHERE id = ?`
-
         return new Promise((resolve, reject) => {
-            db.run(query, id, (error, row) => {
-                if(error)
-                        reject(error)
-                    else
-                        resolve(row)
-                })
+            db.run(query, id, (error) => {
+                if (error) {
+                    reject(error)
+                } else {
+                    resolve(`Pessoa tatuadora de id ${id} deletada com sucesso`)
+                }
+            })
         })
     }
 }
