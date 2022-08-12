@@ -161,21 +161,25 @@ npm start
 
     ```json
        
+    {
+      "Pessoas tatuadoras": [
         {
-            "id": 1,
-            "nome": "Lucas Sampaio",
-            "telefone": "21-998875291"
+          "id": 1,
+          "nome": "Lucas Sampaio",
+          "telefone": "21-998875291"
         },
         {
-            "id": 2,
-            "nome": "Samantha Costa",
-            "telefone": "21-985662419"
+          "id": 2,
+          "nome": "Samantha Costa",
+          "telefone": "21-985662419"
         },
         {
-            "id": 3,
-            "nome": "Pablo Mendes",
-            "telefone": "21-975498842"
+          "id": 3,
+          "nome": "Pablo Mendes",
+          "telefone": "21-975498842"
         }
+      ]
+    }
      ```
 
 - **GET /tatuadores/:id**
@@ -210,7 +214,7 @@ npm start
 
   ```json
           {
-              "msg": "Pessoa tatuadora Raquel Avoante inserida com sucesso"
+              "msg": "Pessoa tatuadora inserida com sucesso"
           }
   ```
 
@@ -229,11 +233,7 @@ npm start
 
   ```json
           {
-              "msg": "Pessoa tatuadora Avoante, com id 6, atualizada com sucesso",
-              "Pessoa tatuadora": {
-                  "nome": "Avoante",
-                  "telefone": "85-123456789"
-              }
+              "mensagem": "Pessoa tatuadora de id 16 atualizada com sucesso!"
           }
   ```
 
@@ -243,7 +243,7 @@ npm start
 
   ```json
           {
-              "msg": "Pessoa tatuadora com 9 deletada com sucesso!"
+            "mensagem": "Pessoa tatuadora de id 16 deletada com sucesso"
           }
   ```
 
