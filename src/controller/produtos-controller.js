@@ -7,8 +7,8 @@ const produtosController = {
     try {
       const produtos = await ProdutosM.getProdutos()
       res.status(200).json({ produtos: produtos });
-    } catch (e) {
-      res.status(400).json(e.message);
+    } catch (error) {
+      res.status(400).json({"msg": error.message});
     }
   },
 
@@ -17,8 +17,8 @@ const produtosController = {
     try {
       const produto = await ProdutosM.getUmProduto(id)
       res.status(200).json({produto : produto});
-    } catch (e) {
-      res.status(404).json(e.message);
+    } catch (error) {
+      res.status(404).json({"msg": error.message});
     }
   },
 
@@ -29,11 +29,7 @@ const produtosController = {
       res.status(200).json({ msg: mensagem })
 
     } catch (error) {
-      res.status(400).json(
-        {
-          "msg": error.message,
-        }
-      )
+      res.status(400).json( {"msg": error.message});
     }
   },
 
