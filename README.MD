@@ -570,51 +570,55 @@ npm start
   Retorna todos os dados do banco. Esquema da resposta:
 
   ```json
-	{
-		"id": 1,
-		"data": "2022-08-15",
-		"horario": "14:00",
-		"id_cliente": 1,
-		"id_tatuador": 2
-	},
-	{
-		"id": 2,
-		"data": "2022-08-18",
-		"horario": "15:00",
-		"id_cliente": 2,
-		"id_tatuador": 3
-	},
-	{
-		"id": 3,
-		"data": "2022-08-19",
-		"horario": "13:00",
-		"id_cliente": 3,
-		"id_tatuador": 1
-	},
-	{
-		"id": 4,
-		"data": "2022-08-30",
-		"horario": "09:00",
-		"id_cliente": 1,
-		"id_tatuador": 2
-	}
+  {
+	"agendamentos": [
+		{
+			"id": 1,
+			"data": "2022-08-15",
+			"horario": "14:00",
+			"id_cliente": 1,
+			"id_tatuador": 2
+		},
+		{
+			"id": 2,
+			"data": "2022-08-18",
+			"horario": "15:00",
+			"id_cliente": 2,
+			"id_tatuador": 3
+		},
+		{
+			"id": 3,
+			"data": "2022-08-19",
+			"horario": "13:00",
+			"id_cliente": 3,
+			"id_tatuador": 1
+		},
+		{
+			"id": 4,
+			"data": "2022-08-30",
+			"horario": "09:00",
+			"id_cliente": 1,
+			"id_tatuador": 2
+		}
+	]
+  }
   ```
 
-- **GET /agendamentos/{id}**
+- **GET/agendamentos/{id}**
 
-  Retorna o agendamento correspondente ao id.
+  Retorna o agendamento correspondente ao id:
 
-   Esquema da resposta:
-
- ```json
+    Esquema da resposta:
+```json
   {
 	"id": 1,
 	"data": "2022-08-15",
 	"horario": "14:00",
 	"id_cliente": 1,
 	"id_tatuador": 2
-
+     }
 ```
+    
 
 - **POST /agendamentos**
 
