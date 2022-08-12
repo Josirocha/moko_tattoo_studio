@@ -31,7 +31,6 @@ export const validaAtualizaProduto = (produto) => {
         produto.quantidade.length === 0 ||
         produto.valor.length === 0 ||
         produto.tipo.length === 0 ||
-        (produto.id && isNaN(produto.id_cliente)) ||
         (produto.descricao && typeof produto.descricao !== 'string') ||
         (produto.quantidade && typeof produto.quantidade !== 'number') ||
         (produto.valor && typeof produto.valor !== 'number') ||
