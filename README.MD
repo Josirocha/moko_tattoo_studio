@@ -61,23 +61,23 @@ npm start
   Retorna todos os dados do banco. Esquema da resposta:
 
   ```json
-  {
+   {
     "produtos": [
       {
-        "id": 1,
-			  "descricao": "Agulhas de tatuagem",
-			  "quantidade": 178,
-			  "valor": 2.5,
-			  "tipo": "Materiais",
-			  "id_fornecedor": 1
+        	"id": 1,
+	  	"descricao": "Agulhas de tatuagem",
+	  	"quantidade": 178,
+	  	"valor": 2.5,
+	  	"tipo": "Materiais",
+	 	 "id_fornecedor": 1
       },
       {
-        "id": 2,
-			  "descricao": "Tinta preta",
-			  "quantidade": 52,
-			  "valor": 30.99,
-			  "tipo": "Materiais",
-			  "id_fornecedor": 2
+        	"id": 2,
+		"descricao": "Tinta preta",
+		"quantidade": 52,
+		"valor": 30.99,
+		"tipo": "Materiais",
+		"id_fornecedor": 2
       }
     ]
   }
@@ -91,11 +91,11 @@ npm start
   {
     "produto": {
       "id": 16,
-		  "descricao": "Tinta branca",
-		  "quantidade": 45,
-		  "valor": 80,
-		  "tipo": "Materiais",
-		  "id_fornecedor": 2
+      "descricao": "Tinta branca",
+     "quantidade": 45,
+      "valor": 80,
+      "tipo": "Materiais",
+      "id_fornecedor": 2
     }
   }
   ```
@@ -119,7 +119,6 @@ npm start
   ```json
   {
     "mensagem": "Produto inserido com sucesso",
-    "erro": false
   }
   ```
 
@@ -141,15 +140,7 @@ npm start
 
   ```json
   {
-    "msg": "tinta vermelha, com id 13 atualizado com sucesso",
-    "produto": {
-      "descricao": "tinta vermelha",
-      "quantidade": 45,
-      "valor": 80,
-      "tipo": "Materiais",
-      "id_fornecedor": 2
-    },
-    "erro": false
+    "msg": "Produto atualizado com sucesso"
   }
   ```
 
@@ -159,8 +150,7 @@ npm start
 
   ```json
   {
-    "msg": "Produto 2 deletado com sucesso!",
-    "erro": "false"
+    "msg": "Produto com id 25 deletado com sucesso"
   }
   ```
 ### 🎨Tatuadores

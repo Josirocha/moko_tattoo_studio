@@ -33,16 +33,16 @@ const dao = {
 
     },
 
-    criarProdutos: (descricao, quantidade, valor, tipo, id_fornecedor) => {
+    criarProdutos: (produto) => {
         const CRIA_PRODUTOS = `INSERT INTO PRODUTOS (DESCRICAO, QUANTIDADE, VALOR, TIPO, ID_FORNECEDOR)
         VALUES (?, ?, ?, ?, ?)`
 
         return new Promise((resolve, reject) => {
-            db.run(CRIA_PRODUTOS, ...Object.values(descricao, quantidade,valor, tipo, id_fornecedor), (error, row) => {
+            db.run(CRIA_PRODUTOS, produto.descricao, produto.quantidade, produto.valor, produto.tipo, produto.id_fornecedor, (error) => {
                 if (error)
                     reject(error)
                 else
-                    resolve(row)
+                    resolve(`Produto inserido com sucesso`)
             })
         })
     },
@@ -55,7 +55,7 @@ const dao = {
                     if(error)
                         reject(error)
                     else
-                        resolve(novo)
+                        resolve(`Produto atualizado com sucesso`)
                 }
             )
         })  
@@ -65,11 +65,11 @@ const dao = {
         const query = `DELETE FROM PRODUTOS WHERE id = ?`
 
         return new Promise((resolve, reject) => {
-            db.run(query, id, (error, row) => {
+            db.run(query, id, (error) => {
                 if(error)
                         reject(error)
                     else
-                        resolve(row)
+                        resolve(`Produto com id ${id} deletado com sucesso`)
                 })
         })
     }

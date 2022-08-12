@@ -1,13 +1,12 @@
-import dao from "../DAO/produtosDAO.js";
 import ProdutosM from "../model/produtos.js";
-import { validaCampo } from "../services/validacaoProdutos.js";
+
 
 const produtosController = {
 
   verProdutos: async (req, res) => {
     try {
-      const resposta = await dao.verProdutos();
-      res.status(200).json({produtos: resposta});
+      const produtos = await ProdutosM.getProdutos()
+      res.status(200).json({ produtos: produtos });
     } catch (e) {
       res.status(400).json(e.message);
     }
@@ -16,64 +15,57 @@ const produtosController = {
   verUmProduto: async (req, res) => {
     const id = req.params.id
     try {
-      const resposta = await dao.verUmProduto(id);
-      res.status(200).json({produto: resposta});
+      const produto = await ProdutosM.getUmProduto(id)
+      res.status(200).json({produto : produto});
     } catch (e) {
       res.status(404).json(e.message);
     }
   },
 
   criarProduto: async (req, res) => {
-    const body = req.body;
     try {
-      const criaProduto = ProdutosM(...Object.values(body));
-      validaCampo(...Object.values(criaProduto))
-      const novoProduto = await dao.criarProdutos(criaProduto);
-      res.json({
-        msg: `${body.descricao} inserido com sucesso`,
-        Produto: novoProduto,
-        erro: false,
-      });
-    } catch (e) {
-      res.status(201).json(e.message);
+      const dados = req.body
+      const mensagem = await ProdutosM.criarProduto(dados)
+      res.status(200).json({ msg: mensagem })
+
+    } catch (error) {
+      res.status(400).json(
+        {
+          "msg": error.message,
+        }
+      )
     }
   },
 
   atualizarProduto: async (req, res) => {
-    const body = req.body
-    const id = req.params.id
     try {
-      const criarProduto = ProdutosM(...Object.values(body));
-      validaCampo(...Object.values(criarProduto))
-      const novoProduto = await dao.atualizarProduto(id, criarProduto)
-      res.json({
-        "msg": `${body.descricao}, com id ${id} atualizado com sucesso`,
-        "produto": novoProduto,
-        "erro": false
-      })
-    } catch (e) {
-      res.json(e.message)
+      const id = req.params.id
+      const dados = req.body
+      const mensagem = await ProdutosM.atualizaProduto(id, dados)
+      res.status(200).json({ msg: mensagem })
+      res.json()
+    } catch (error) {
+      res.status(404).json(
+        {
+          "msg": error.message,
+        }
+      )
     }
   },
 
   deletarProduto: async (req, res) => {
-    const id = req.params.id;
     try {
-      await dao.deletarProduto(id);
-      res.json({
-        msg: `Produto ${id} deletado com sucesso!`,
-        erro: "false"
-      });
-    } catch (e) {
-      res.json({
-        msg: e.message,
-        erro: true
-      });
+      const id = req.params.id
+      const mensagem = await ProdutosM.deleteProduto(id)
+      res.status(201).json({ msg: mensagem })
+    } catch (error) {
+      res.status(404).json(
+        {
+          "msg": error.message,
+        }
+      )
     }
-  }
-
-
-
+  },
 };
 
 export default produtosController;
