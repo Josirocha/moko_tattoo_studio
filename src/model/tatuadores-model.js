@@ -1,5 +1,5 @@
 import tatuadoresDAO from "../DAO/tatuadoresDAO.js"
-import { validaNome } from "../services/validacaoTatuadores.js"
+import { validaTatuador, validaId, validaSeTemConteudo } from "../services/validacaoTatuadores.js"
 
 const tatuadoresModel = {
 
@@ -16,12 +16,47 @@ const tatuadoresModel = {
     listarTatuador: async (id) => {
         try {
             const dados = await tatuadoresDAO.listarTatuador(id)
-            if (!dados) throw new Error ("Pessoa tatuadora não encontrada")
+            validaSeTemConteudo(dados)
             return dados 
         } catch (error) {
             throw error
         } 
     },
+
+    criarTatuador: async (tatuador) => {
+        try {
+            validaTatuador(tatuador)
+            const resposta = await tatuadoresDAO.criarTatuador(tatuador)
+            return resposta
+        } catch (error) {
+            throw error
+        }
+    },
+
+    atualizarTatuador: async (id, tatuador) => {
+        try {
+            validaId(id)
+            validaTatuador(tatuador)
+            const dados = await tatuadoresDAO.listarTatuador(id)
+            validaSeTemConteudo(dados)
+            const resposta = await tatuadoresDAO.atualizarTatuador(id, tatuador)
+            return resposta
+        } catch (error) {
+            throw error
+        }
+    },
+
+    deletarTatuador: async (id) => {
+        try {
+            validaId(id)
+            const dados = await tatuadoresDAO.listarTatuador(id)
+            validaSeTemConteudo(dados)
+            const resposta = await tatuadoresDAO.deletarTatuador(id)
+            return resposta
+        } catch (error) {
+            throw error
+        }
+    }
 
 }
 
