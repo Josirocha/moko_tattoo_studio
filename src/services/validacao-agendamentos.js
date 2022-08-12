@@ -29,4 +29,6 @@ export const validaAtualizaAgendamento = (agendamento) => {
         throw new Error("dados inválidos")
     }
 }
-
+export const validaSeTemConteudo = (dados) => {
+    if (!dados) throw new Error("agendamento não encontrado")
+}
