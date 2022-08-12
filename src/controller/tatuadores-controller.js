@@ -1,69 +1,71 @@
-import tatuadoresDAO from "../DAO/tatuadoresDAO.js";
 import tatuadoresModel from "../model/tatuadores-model.js";
 
 const tatuadoresController = {
+
   listarTatuadores: async (req, res) => {
     try {
-      const resposta = await tatuadoresDAO.listarTatuadores();
-      res.status(200).json(resposta);
+      const resposta = await tatuadoresModel.listarTatuadores()
+      res.status(200).json({"Pessoas tatuadoras": resposta});
     } catch (e) {
-      res.status(400).json(e.message);
+      res.status(500).json({
+        "mensagem": e.message,
+        "erro": true
+      });
     }
   },
 
   listarTatuador: async (req, res) => {
-    const id = req.params.id
     try {
-      const resposta = await tatuadoresDAO.listarTatuador(id);
+      const id = req.params.id
+      const resposta = await tatuadoresModel.listarTatuador(id)
       res.status(200).json(resposta);
     } catch (e) {
-      res.status(404).json(e.message);
+      res.status(404).json({
+        "mensagem": e.message,
+        "erro": true
+      })
     }
   },
 
   criarTatuador: async (req, res) => {
-    const body = req.body;
     try {
-      const insereTatuador = tatuadoresModel(body.nome, body.telefone)
-      // colocar a validação aqui
-      const novoTatuador = await tatuadoresDAO.criarTatuador(insereTatuador)
+      const body = req.body;
+      const resposta = await tatuadoresModel.criarTatuador(body)
       res.status(201).json({
-        "msg": `Pessoa tatuadora ${body.nome} inserida com sucesso`,
-        "Pessoa tatuadora": novoTatuador
+        "mensagem": resposta
       })
 
     } catch (e) {
-      res.status(404).json(e.message);
+      res.status(400).json({
+        "mensagem": e.message,
+        "erro": true
+      })
     }
   },
 
   atualizarTatuador: async (req, res) => {
-    const body = req.body
-    const id = req.params.id
     try {
-      const criaTatuador = tatuadoresModel(body.nome, body.telefone)
-      // valida.validaUser(...Object.values(criaUsuario))
-      const novoTatuador = await tatuadoresDAO.atualizarTatuador(id, criaTatuador)
-      res.json({
-        "msg": `Pessoa tatuadora ${body.nome}, com id ${id}, atualizada com sucesso`,
-        "Pessoa tatuadora": novoTatuador
-      })
-
+      const body = req.body
+      const id = req.params.id
+      const resposta = await tatuadoresModel.atualizarTatuador(id, body)
+      res.status(200).json({"mensagem": resposta})
     } catch (e) {
-      res.json(e.message)
+      res.status(404).json({
+        "mensagem": e.message,
+        "erro": true
+      })
     }
   },
 
-  deletarTatuador : async (req, res) => {
-    const id = req.params.id
+  deletarTatuador: async (req, res) => {
     try {
-      await tatuadoresDAO.deletarTatuador(id)
-      res.json({
-        "msg": `Pessoa tatuadora com ${id} deletada com sucesso!`
-      })
+      const id = req.params.id
+      const resposta = await tatuadoresModel.deletarTatuador(id)
+      res.status(200).json({"mensagem": resposta})
     } catch (e) {
-      res.json({
-        "msg": e.message
+      res.status(400).json({
+        "msg": e.message,
+        "erro": true
       })
     }
   }
