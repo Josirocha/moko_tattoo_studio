@@ -1,12 +1,16 @@
-const validaTatuador = (tatuador) => {
-    const reNome = /^[a-zA-ZéúíóáÉÚÍÓÁèùìòàçÇÈÙÌÒÀõãñÕÃÑêûîôâÊÛÎÔÂëÿüïöäËYÜÏÖÄ\-\ \s]+$/;
-    const reTelefone = /^\(\d{2}\)\d{5}-\d{4}$/g
-    if (!reNome.test(tatuador.nome)) {
-        throw new Error("Nome inválido! Preencha o nome corretamente")
-    }
-    if (!reTelefone.test(tatuador.telefone)) {
-        throw new Error ("Número inválido! Preencha o telefone no formato (xx)xxxxx-xxxx incluindo parênteses e hífen")
+export const validaTatuador = (tatuador) => {
+    
+    if (!tatuador.nome || !tatuador.telefone) {
+        throw new Error("Algum campo está vazio. Preencha todos os campos!")
     }
 }
 
-export default validaTatuador
+export const validaId = (id) => {
+    if (isNaN(id)) {
+        throw new Error ("Id inválido")
+    }
+}
+
+export const validaSeTemConteudo = (dados) => {
+    if (!dados) throw new Error("Id não encontrado no banco dados")
+}
