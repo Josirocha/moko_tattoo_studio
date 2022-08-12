@@ -6,10 +6,11 @@ const tatuadoresDAO = {
         const query = `SELECT * FROM TATUADORES`
         return new Promise((resolve, reject) => {
             db.all(query, (error,row) => {
-                if(error)
-                    reject(error)
-                else
+                if(error) {
+                    reject(error)   
+                } else {
                     resolve(row)
+                }
             })
         })
     },
@@ -52,7 +53,7 @@ const tatuadoresDAO = {
             if (novo.telefone) {
                 telefone = `telefone = ?`
             }
-            return `UPDATE TATUADORES SET ${nome} = ?, ${telefone} = ? WHERE id = ?`
+            return `UPDATE TATUADORES SET ${nome}, ${telefone} WHERE id = ?`
         }
         return new Promise( (resolve, reject) => {
             db.run(query(novo), ...Object.values(novo), id, (error) => {
