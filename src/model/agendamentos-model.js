@@ -35,6 +35,8 @@ const agendamentoModel = {
     deletaAgendamento: async (id) => {
         try {
             validacaoAgendamento.validaId(id)
+            const dados = await agendamentosDAO.pegaUmAgendamento(id)
+            validacaoAgendamento.validaSeTemConteudo(dados)
             const mensagem = await agendamentosDAO.deletaAgendamentos(id)
             return mensagem
         } catch (error) {
@@ -45,6 +47,10 @@ const agendamentoModel = {
         try {
             validacaoAgendamento.validaId(id)
             validacaoAgendamento.validaAtualizaAgendamento(agendamento)
+
+            const dados = await agendamentosDAO.pegaUmAgendamento(id)
+            validacaoAgendamento.validaSeTemConteudo(dados)
+            
             const mensagem = await agendamentosDAO.atualizaAgendamento(id, agendamento)
             return mensagem
         } catch (error) {
