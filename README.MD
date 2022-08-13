@@ -255,31 +255,30 @@ npm start
 
   ```json
   {
-    "fornecedores": [
-      {
-        "id": 1,
-        "nome": "AGULHAS MIL LTDA",
-        "telefone": "21-912345678",
-        "endereco": "Rua São Bento, nº 123",
-        "email": "agulhasmil@gmail.com"
-      },
-      {
-        "id": 2,
-        "nome": "ELECTRIC INK",
-        "telefone": "21-998741145",
-        "endereco": "Av. Mario Cruz, nº 2002",
-        "email": "eletricink@gmail.com"
-      },
-      {
-        "id": 3,
-        "nome": "CAPITAL PIERCING",
-        "telefone": "21-998663347",
-        "endereco": "Rua João de Barro, nº 198",
-        "email": "capitalpiercing@gmail.com"
-      }
-    ]
+    "resultado": [
+        {
+            "id": 1,
+            "nome": "LUVAS",
+            "telefone": "21-912345678",
+            "endereco": "Rua São Bento, nº 123",
+            "email": "luvasmil@gmail.com"
+        },
+        {
+            "id": 2,
+            "nome": "ELECTRIC INK",
+            "telefone": "21-998741145",
+            "endereco": "Av. Mario Cruz, nº 2002",
+            "email": "eletricink@gmail.com"
+        },
+        {
+            "id": 3,
+            "nome": "CAPITAL PIERCING",
+            "telefone": "21-998663347",
+            "endereco": "Rua João de Barro, nº 198",
+            "email": "capitalpiercing@gmail.com"
+        }
+      ]
   }
-  ```
 
 - **GET /fornecedoresId/id/{id}**
 
@@ -287,15 +286,13 @@ npm start
 
   ```json
   {
-    "fornecedores": [
-      {
-        "id": 2,
-        "nome": "ELECTRIC INK",
-        "telefone": "21-998741145",
-        "endereco": "Av. Mario Cruz, nº 2002",
-        "email": "eletricink@gmail.com"
-      }
-    ]
+    "resultado": {
+        "id": 1,
+        "nome": "LUVAS",
+        "telefone": "21-912345678",
+        "endereco": "Rua São Bento, nº 123",
+        "email": "luvasmil@gmail.com"
+    }
   }
   ```
 
@@ -316,7 +313,7 @@ npm start
 
   ```json
   {
-    "msg": "Fornecedor POMADAS inserido com sucesso"
+    "mensagem": "Fornecedor inserido com sucesso!"
   }
   ```
 
@@ -337,14 +334,7 @@ npm start
 
   ```json
   {
-    "msg": "Fornecedor LUVAS, com id 1, atualizado com sucesso",
-    "Fornecedor": {
-      "nome": "LUVAS",
-      "telefone": "21-912345678",
-      "endereco": "Rua São Bento, nº 123",
-      "email": "luvasmil@gmail.com"
-    },
-    "erro": false
+    "mensagem": "Fornecedores atualizado com sucesso!"
   }
   ```
 
@@ -354,8 +344,7 @@ npm start
 
   ```json
   {
-       "msg": "Fornecedor4 deletado com sucesso!",
-       "erro": "false"
+    "mensagem": "Fornecedores atualizado com sucesso!"
   }
   ```
 
