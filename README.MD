@@ -465,25 +465,26 @@ npm start
 
   ```json
       {
+    "resultado": [
         {
-          "id": 1,
-          "categoria": "Realismo",
-          "link": "https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2021/01/tatuagens-realistas-desenhos-impressionantes-para-te-inspirar-960x658.jpg",
-          "id_tatuador": 1
-      },
-      {
-          "id": 2,
-          "categoria": "Maori",
-          "link": "https://blog.pajaris.com.br/wp-content/uploads/2021/02/tatuagem-maori-26.jpg",
-          "id_tatuador": 2
-      },
-      {
-          "id": 3,
-          "categoria": "OldSchool",
-          "link": "https://www.minhatatuagem.com/wp-content/uploads/2020/01/tatuagem-oldschool-40.jpg",
-          "id_tatuador": 3
-      }
-
+            "id": 1,
+            "categoria": "Realismo",
+            "link": "https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2021/01/tatuagens-realistas-desenhos-impressionantes-para-te-inspirar-960x658.jpg",
+            "id_tatuador": 1
+        },
+        {
+            "id": 2,
+            "categoria": "Maori",
+            "link": "https://blog.pajaris.com.br/wp-content/uploads/2021/02/tatuagem-maori-26.jpg",
+            "id_tatuador": 2
+        },
+        {
+            "id": 3,
+            "categoria": "OldSchool",
+            "link": "https://www.minhatatuagem.com/wp-content/uploads/2020/01/tatuagem-oldschool-40.jpg",
+            "id_tatuador": 3
+        },
+      ]
   }
   ```
 
@@ -494,12 +495,12 @@ npm start
 
   ```json
   {
-      {
-      "id": 1,
-      "categoria": "Realismo",
-      "link": "https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2021/01/tatuagens-realistas-desenhos-impressionantes-para-te-inspirar-960x658.jpg",
-      "id_tatuador": 1
-      }
+    "resultado": {
+        "id": 1,
+        "categoria": "Realismo",
+        "link": "https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2021/01/tatuagens-realistas-desenhos-impressionantes-para-te-inspirar-960x658.jpg",
+        "id_tatuador": 1
+    }
   }
   ```
 
@@ -522,9 +523,8 @@ npm start
 
   ```json
     {
-    "msg": "Imagem da categoria: Aquarela do tatuador id: 2 foi inserida com sucesso",
-    "erro": false
-  }
+    "mensagem": "Tatuagem inserida com sucesso!"
+    }
   ```
 
 - **PUT /tatuagens/{id}**
@@ -544,8 +544,7 @@ npm start
 
   ```json
     {
-    "msg": "Imagem da Aquarela, com id 6 atualizada com sucesso",
-    "erro": false
+    "mensagem": "Tatuagem atualizada com sucesso!"
     }
   ```
 
@@ -556,9 +555,8 @@ npm start
 
   ```json
    {
-    "msg": "Imagem do id 6 deletada com sucesso!",
-    "erro": "false"
-  }
+    "mensagem": "Tatuagem deletada com sucesso!"
+    }
   ```
 
 
