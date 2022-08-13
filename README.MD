@@ -190,9 +190,9 @@ npm start
 
   ```json
           {
-              "id": 6,
-              "nome": "Avoante",
-              "telefone": "21-123456789"
+              "id": 2,
+              "nome": "Samantha Costa",
+              "telefone": "21-985662419"
           }
   ```
 
@@ -233,7 +233,7 @@ npm start
 
   ```json
           {
-              "mensagem": "Pessoa tatuadora de id 16 atualizada com sucesso!"
+              "mensagem": "Pessoa tatuadora de id 4 atualizada com sucesso!"
           }
   ```
 
@@ -243,7 +243,7 @@ npm start
 
   ```json
           {
-            "mensagem": "Pessoa tatuadora de id 16 deletada com sucesso"
+            "mensagem": "Pessoa tatuadora de id 4 deletada com sucesso"
           }
   ```
 

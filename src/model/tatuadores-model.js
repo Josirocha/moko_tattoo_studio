@@ -16,6 +16,7 @@ const tatuadoresModel = {
     listarTatuador: async (id) => {
         try {
             const dados = await tatuadoresDAO.listarTatuador(id)
+            validaId(id)
             validaSeTemConteudo(dados)
             return dados 
         } catch (error) {
