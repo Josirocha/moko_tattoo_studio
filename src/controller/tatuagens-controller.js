@@ -34,7 +34,7 @@ const tatuagensController = {
     const body = req.body;
     const id = req.params.id;
     try {
-      const novo = await tatuagensModel.atualizaImagem(id, alteraImagem);
+      const resposta = await tatuagensModel.atualizaImagem(id, body);
       res.status(resposta.status).json(resposta.dados);
     } catch (error) {
       res.status(error.status).json(error.mensagem);
@@ -44,7 +44,7 @@ const tatuagensController = {
   deletarImagens: async (req, res) => {
     const id = req.params.id;
     try {
-      await tatuagensModel.deletaImagem(id);
+      const resposta = await tatuagensModel.deletaImagem(id);
       res.status(resposta.status).json(resposta.dados);
     } catch (error) {
       res.status(error.status).json(error.mensagem);
