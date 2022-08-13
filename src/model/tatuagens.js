@@ -12,8 +12,7 @@ const tatuagensModel = {
 
      pegaImagens: async () => {
         try {
-            //validacaoAgendamento.validaId(id)
-            const dados = await tatuagensDAO.verTatuagens()
+            const dados = await tatuagensDAO.verTatuagens();
             return dados
         } catch (error) {
             throw error
@@ -22,7 +21,7 @@ const tatuagensModel = {
 
     pegaImagem: async (id) => {
         try {
-            const dados = await tatuagensDAO.verTatuagem(id)
+            const dados = await tatuagensDAO.verTatuagem(id);
             return dados
         } catch (error) {
             throw error
@@ -31,9 +30,9 @@ const tatuagensModel = {
 
     insereImagem: async (obj) => {
         try {
-            const criaTattoo = tatuagensModel.tatuagensModel(obj)
+            const criaTattoo = tatuagensModel.tatuagensModel(obj);
             validaCampo.valida(...Object.values(criaTattoo));
-            const mensagem = await tatuagensDAO.criarTatuagem(criaTattoo)
+            const mensagem = await tatuagensDAO.criarTatuagem(criaTattoo);
             return mensagem
         } catch (error) {
             throw error
@@ -42,8 +41,9 @@ const tatuagensModel = {
 
     atualizaImagem: async (id, alteraImagem) => {
         try {
-            //validaCampo.valida(...Object.values(criaTattoo));
-            const mensagem = await tatuagensDAO.ajustaTatuagem(id, alteraImagem)
+            await tatuagensDAO.verTatuagem(id);
+            validaCampo.valida(...Object.values(alteraImagem));
+            const mensagem = await tatuagensDAO.ajustaTatuagem(id, alteraImagem);
             return mensagem
         } catch (error) {
             throw error
@@ -52,7 +52,7 @@ const tatuagensModel = {
 
     deletaImagem: async (id) => {
         try {
-            const mensagem = await tatuagensDAO.deletarTatuagem(id)
+            const mensagem = await tatuagensDAO.deletarTatuagem(id);
             return mensagem
         } catch (error) {
             throw error

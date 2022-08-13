@@ -97,15 +97,28 @@ const dao = {
     ajustaTatuagem: (id, alteraImagem) => {
         const ajustaTattoo = `UPDATE TATUAGENS SET categoria = ?, link = ?, id_tatuador = ? WHERE id = ?`;
         return new Promise((resolve, reject) => {
-            db.run(ajustaTattoo, ...Object.values(alteraImagem), id, (error, row) => {
+            db.run(ajustaTattoo, ...Object.values(alteraImagem), id, (error) => {
                 if (error) {
-                    reject(error);
+                    reject({
+                        mensagem: {
+                            mensagem: error,
+                            error: true,
+                        },
+                        status:500,
+                    });
                 } else {
-                    resolve(row);
+                    resolve({
+                        dados: {
+                            mensagem: "Tatuagem atualizada com sucesso!"
+                        },
+                        status: 200,
+                        error: false,
+                    });
                 }
             });
         });
     },
+
 
     deletarTatuagem: (id) => {
         const deletaTattoo = `DELETE FROM TATUAGENS WHERE id = ?`;
